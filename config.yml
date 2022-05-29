@@ -1,0 +1,13 @@
+---
+bot_settings:
+  debug_mode: true
+  prefix: 'b|'
+intents:
+  bans: true
+  emojis: true
+  guilds: true
+  members: true
+  message_content: true
+  messages: true
+  reactions: true
+  voice_states: true
