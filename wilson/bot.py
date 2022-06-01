@@ -45,6 +45,7 @@ class Wilson(commands.Bot):
     async def on_ready(self):
         for cog in cogs:
             await self.load_extension(cog)
+        log.log_message('Wilson appears...')
 
     @property
     def config(self) -> BotConfig:
