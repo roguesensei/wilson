@@ -43,7 +43,6 @@ class Wilson(commands.Bot):
         return discord.Embed(title=title, description=description, colour=0x1f0000)
 
     async def on_ready(self):
-        await self.tree.sync(guild=discord.Object(id=764866015754453023))
         for cog in cogs:
             await self.load_extension(cog)
 
