@@ -1,6 +1,7 @@
+import discord
 import wilson.util.logger as log
 
-from discord import Client, Intents
+from discord import Intents
 from discord.ext import commands
 from wilson.util.bot_config import BotConfig
 
@@ -37,7 +38,12 @@ class Wilson(commands.Bot):
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
+    @staticmethod
+    def generate_embed(title, description='') -> discord.Embed:
+        return discord.Embed(title=title, description=description, colour=0x1f0000)
+
     async def on_ready(self):
+        await self.tree.sync(guild=discord.Object(id=764866015754453023))
         for cog in cogs:
             await self.load_extension(cog)
 
