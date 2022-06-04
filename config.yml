@@ -1,7 +1,10 @@
 ---
 bot_settings:
   debug_mode: true
-  default_status: ""
+  default_presence:
+    activity_name: "for b|"
+    activity_type: 3 # See discord.ActivityType
+    status: "dnd" # See discord.Status
   embed_footer: "Enjoy life, while it lasts... And remember, Don't Starve!"
   prefix: "b|"
 intents:

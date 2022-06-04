@@ -48,6 +48,11 @@ class Wilson(commands.Bot):
     async def on_ready(self):
         for cog in cogs:
             await self.load_extension(cog)
+
+        default_presence = self.config.bot_settings.default_presence
+        default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)
+
+        await self.change_presence(activity=default_activity, status=default_presence.status)
         log.log_message('Wilson appears...')
 
     @property

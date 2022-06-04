@@ -1,15 +1,40 @@
+import discord
 import yaml
 
 
+class ConfigBotSettingsPresence:
+    def __init__(self, activity_name: str, activity_type: discord.ActivityType, status: discord.Status):
+        self._activity_name = activity_name
+        self._activity_type = activity_type
+        self._status = status
+
+    @property
+    def activity_name(self) -> str:
+        return self._activity_name
+
+    @property
+    def activity_type(self) -> discord.ActivityType:
+        return self._activity_type
+
+    @property
+    def status(self) -> discord.Status:
+        return self._status
+
+
 class ConfigBotSettings:
-    def __init__(self, debug_mode: bool, embed_footer: str, prefix: str):
+    def __init__(self, debug_mode: bool, default_presence: ConfigBotSettingsPresence, embed_footer: str, prefix: str):
         self._debug_mode = debug_mode
+        self._default_presence = default_presence
         self._embed_footer = embed_footer
         self._prefix = prefix
 
     @property
     def debug_mode(self) -> bool:
         return self._debug_mode
+
+    @property
+    def default_presence(self) -> ConfigBotSettingsPresence:
+        return self._default_presence
 
     @property
     def embed_footer(self) -> str:
@@ -73,10 +98,18 @@ class BotConfig:
         conf = yaml.safe_load(open(path))
 
         conf_settings = conf['bot_settings']
+        conf_settings_presence = conf_settings['default_presence']
         conf_intents = conf['intents']
+
+        default_presence = ConfigBotSettingsPresence(
+            activity_name=conf_settings_presence['activity_name'],
+            activity_type=conf_settings_presence['activity_type'],
+            status=conf_settings_presence['status']
+        )
 
         self._settings = ConfigBotSettings(
             debug_mode=conf_settings['debug_mode'],
+            default_presence=default_presence,
             embed_footer=conf_settings['embed_footer'],
             prefix=conf_settings['prefix']
         )
