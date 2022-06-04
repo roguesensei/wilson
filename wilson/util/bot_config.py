@@ -21,12 +21,28 @@ class ConfigBotSettingsPresence:
         return self._status
 
 
+class ConfigBotSettingsRelease:
+    class Version:
+        major: int
+        minor: int
+        patch: int
+        suffix: str
+
+        def __str__(self):
+            return f'V{self.major}.{self.minor}.{self.patch} {self.suffix}'
+
+    update_name: str
+    version: Version
+
+
 class ConfigBotSettings:
-    def __init__(self, debug_mode: bool, default_presence: ConfigBotSettingsPresence, embed_footer: str, prefix: str):
+    def __init__(self, debug_mode: bool, default_presence: ConfigBotSettingsPresence, embed_footer: str, prefix: str,
+                 release: ConfigBotSettingsRelease):
         self._debug_mode = debug_mode
         self._default_presence = default_presence
         self._embed_footer = embed_footer
         self._prefix = prefix
+        self._release = release
 
     @property
     def debug_mode(self) -> bool:
@@ -43,6 +59,10 @@ class ConfigBotSettings:
     @property
     def prefix(self) -> str:
         return self._prefix
+
+    @property
+    def release(self) -> ConfigBotSettingsRelease:
+        return self._release
 
 
 class ConfigIntents:
@@ -100,6 +120,7 @@ class BotConfig:
 
             conf_settings = conf['bot_settings']
             conf_settings_presence = conf_settings['default_presence']
+            conf_settings_release = conf_settings['release']
             conf_intents = conf['intents']
 
             default_presence = ConfigBotSettingsPresence(
@@ -107,12 +128,21 @@ class BotConfig:
                 activity_type=conf_settings_presence['activity_type'],
                 status=conf_settings_presence['status']
             )
+            release = ConfigBotSettingsRelease()
+            release.version = ConfigBotSettingsRelease.Version()
+
+            release.update_name = conf_settings_release['update_name']
+            release.version.major = conf_settings_release['version']['major']
+            release.version.minor = conf_settings_release['version']['minor']
+            release.version.patch = conf_settings_release['version']['patch']
+            release.version.suffix = conf_settings_release['version']['suffix']
 
             self._settings = ConfigBotSettings(
                 debug_mode=conf_settings['debug_mode'],
                 default_presence=default_presence,
                 embed_footer=conf_settings['embed_footer'],
-                prefix=conf_settings['prefix']
+                prefix=conf_settings['prefix'],
+                release=release
             )
             self._intents = ConfigIntents(
                 bans=bool(conf_intents['bans']),

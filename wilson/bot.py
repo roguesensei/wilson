@@ -1,4 +1,5 @@
 import discord
+import time
 import wilson.util.logger as log
 
 from discord import Intents
@@ -13,6 +14,7 @@ class Wilson(commands.Bot):
     def __init__(self, owner_id: int, token: str, config_path: str = 'config.yml'):
         self._config = BotConfig(config_path)
         self._token = token
+        self._online_time = 0
 
         intents_conf = self.config.intents
         bot_intents = Intents(
@@ -32,17 +34,23 @@ class Wilson(commands.Bot):
         )
         self.remove_command('help')
 
-    def run_bot(self):
+    def run_bot(self) -> None:
         try:
             log.log_info('Starting bot', self.config.bot_settings.debug_mode)
             self.run(self._token)
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
-    def generate_embed(self, title, author: discord.Member, description='') -> discord.Embed:
+    def generate_embed(self, title, author: discord.Member, description: str = None, image_url: str = None,
+                       thumbnail_url: str = None) -> discord.Embed:
         embed = discord.Embed(title=title, description=description, colour=0x1f0000)
         embed.set_author(name=f'Requested by {author.display_name}', icon_url=author.display_avatar.url)
         embed.set_footer(text=self.config.bot_settings.embed_footer, icon_url=self.user.avatar.url)
+
+        if image_url is not None:
+            embed.set_image(url=image_url)
+        if thumbnail_url is not None:
+            embed.set_thumbnail(url=thumbnail_url)
 
         return embed
 
@@ -54,6 +62,9 @@ class Wilson(commands.Bot):
         default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)
 
         await self.change_presence(activity=default_activity, status=default_presence.status)
+        self._online_time = time.time()
+
+        log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
         log.log_message('Wilson appears...')
 
     async def on_command_error(self, ctx: commands.Context, exc: errors.CommandError) -> None:
@@ -65,24 +76,29 @@ class Wilson(commands.Bot):
         elif isinstance(exc, errors.MissingRequiredArgument) or isinstance(exc, errors.BadArgument) or isinstance(
                 exc, errors.UserInputError):
             log.log_error('MissingRequiredArgument or BadArgument', exc)
-            await ctx.send(
+            await ctx.message.reply(
                 'Oops, you\'ve either entered an invalid argument or you\'re missing one or more argument(s)')
         elif isinstance(exc, errors.MissingPermissions) or isinstance(exc, errors.NotOwner):
             log.log_error('MissingPermissions or NotOwner', exc)
-            await ctx.send('You do not have permission to do that.')
+            await ctx.message.reply('You do not have permission to do that.')
         elif isinstance(exc, errors.CommandOnCooldown):
             log.log_error('CommandOnCooldown', exc)
-            await ctx.send('This command is on cooldown...')
+            await ctx.message.reply('This command is on cooldown...')
         elif isinstance(exc, errors.BotMissingPermissions) or isinstance(exc, errors.BotMissingAnyRole):
             log.log_error('BotMissingPermissions or BotMissingAnyRole', exc)
-            await ctx.send('I don\'t have permission to do that... Check my roles/permissions in the server settings.')
+            await ctx.message.reply(
+                'I don\'t have permission to do that... Check my roles/permissions in the server settings.')
         elif isinstance(exc, errors.NSFWChannelRequired):
             log.log_error('NSFWChannelRequired', exc)
-            await ctx.send('You need to be in a NSFW channel to do that')
+            await ctx.message.reply('You need to be in a NSFW channel to do that')
         else:
             log.log_error('Unhandled Exception', exc)
-            await ctx.send('An unhandled error occurred while invoking the command')
+            await ctx.message.reply('An unhandled error occurred while invoking the command')
 
     @property
     def config(self) -> BotConfig:
         return self._config
+
+    @property
+    def online_time(self) -> int:
+        return self._online_time

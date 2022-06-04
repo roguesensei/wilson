@@ -7,6 +7,13 @@ bot_settings:
     status: "dnd" # See discord.Status
   embed_footer: "Enjoy life, while it lasts... And remember, Don't Starve!"
   prefix: "b|"
+  release:
+    update_name: "Update 2.0"
+    version:
+      major: 2
+      minor: 0
+      patch: 0
+      suffix: "WILSON"
 intents:
   bans: true
   emojis: true
