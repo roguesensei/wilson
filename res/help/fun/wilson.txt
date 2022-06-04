@@ -1,0 +1,16 @@
+Written as: `|wilson <reaction_name> <message>`
+`<reaction_name>` is the name of the reaction and `<message>` is an optional subject.
+Command aliases: `|react`
+
+The reactions are as follows:
+`angry` `beefalo` `bored` `dab` `dance` `disgust` `facepalm` `fight` `headache`
+`jump` `laugh` `moody` `perform` `sad` `shuffle` `sit` `squat` `swoon` `tired`
+
+Valid Examples:
+:white_small_square: `|wilson dance`
+:white_small_square: `|wilson headache @user`
+:white_small_square: `|wilson perform the bass`
+
+Invalid Examples:
+:white_small_square: `|wilson reaction_name`
+:white_small_square: `|wilson`

@@ -1,0 +1,12 @@
+Written as: `|avatar <@user>`
+Where `<@user>` is an optional parameter of a discord user.
+Leave blank for your own avatar
+Command aliases: `|av`
+
+Valid Examples:
+:white_small_square: `|avatar`
+:white_small_square: `|avatar Wilson`
+:white_small_square: `|avatar @Wilson`
+
+Invalid Examples:
+:white_small_square: `|avatar @UserNotInServer`

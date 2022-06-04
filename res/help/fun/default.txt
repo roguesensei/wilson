@@ -1,0 +1,15 @@
+:white_small_square: `avatar <@user?>`: Get your avatar or a users
+:white_small_square: `dice <number_sides>` Roll a dice
+:white_small_square: `emoji <:emoji:>`: Display emoji image
+:white_small_square: `f`: Press F to pay respects
+:white_small_square: `flip`: Heads I win, Tails you lose
+:white_small_square: `lenny`: Let's be honest, everyone needs a Lenny
+:white_small_square: `serverinfo`: Displays the server info
+:white_small_square: `wilson <reaction_name> <message>`: Use a Wilson GIF
+:white_small_square: `whois <@user>`: Displays user information
+
+Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
+```yml
+Example: |help fun dice
+# Not case sensitive
+```

@@ -1,0 +1,12 @@
+Written as: `|rule34 <tag_search>`
+`<tag_search>` is a single rule34 tag to search by. Multiple tags must be concatenated with `+` (no spaces).
+Tags themselves can include spaces, underscores (_) are added automatically.
+Command aliases: `|r34`
+
+Valid Examples:
+:white_small_square: `|rule34 <tag>`
+:white_small_square: `|rule34 <tag1>+<tag2>`
+
+Invalid Examples:
+:white_small_square: `|rule34`
+:white_small_square: `|rule34 <tag1>, <tag2>`

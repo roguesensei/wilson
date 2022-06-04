@@ -1,0 +1,13 @@
+**Permissions Required: Manage Server**
+Written as: `|custom <action> <command_name> <response>`
+`<action>` is specified action which can include:
+
+:white_small_square: `text` *Create a text-response custom command with `<command_name>` as the command name and `<response>` as the text*
+
+:white_small_square: `image` *Create an image-response custom command with `<command_name>` as the command name and `<response>` as the image url*
+
+:white_small_square: `edit` *Edit a custom command with `<command_name>` as the command name to edit and `<response>` as the new response*
+
+:white_small_square: `delete` *Delete a custom command with `<command_name>` as the command name*
+
+You can have up to 10 custom commands by default

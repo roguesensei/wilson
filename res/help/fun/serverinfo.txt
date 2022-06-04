@@ -1,0 +1,5 @@
+Written as: `|serverinfo`
+
+Valid Examples:
+:white_small_square: `|serverinfo`
+:white_small_square: `|serverinfo Wilson World`

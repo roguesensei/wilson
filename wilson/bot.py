@@ -29,6 +29,7 @@ class Wilson(commands.Bot):
             owner_id=owner_id,
             intents=bot_intents
         )
+        self.remove_command('help')
 
     def run_bot(self):
         try:
@@ -37,8 +38,9 @@ class Wilson(commands.Bot):
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
-    def generate_embed(self, title, description='') -> discord.Embed:
+    def generate_embed(self, title, author: discord.Member, description='') -> discord.Embed:
         embed = discord.Embed(title=title, description=description, colour=0x1f0000)
+        embed.set_author(name=f'Requested by {author.display_name}', icon_url=author.display_avatar.url)
         embed.set_footer(text=self.config.bot_settings.embed_footer, icon_url=self.user.avatar.url)
 
         return embed

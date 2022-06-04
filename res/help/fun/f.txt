@@ -1,0 +1,5 @@
+Written as: `|f`
+
+Valid Examples:
+:white_small_square: `|f`
+:white_small_square: `|f Wilson`

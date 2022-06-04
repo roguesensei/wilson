@@ -1,0 +1,10 @@
+Written as: `|embed <message>`
+`<message>` is a message the user wishes to be embedded
+
+Valid Examples:
+:white_small_square: |embed This is a message
+:white_small_square: |embed This is a `\n` newline
+`/n` represents a newline, meaning the user can embed multiple lines.
+
+Invalid Examples:
+:white_small_square: `|embed`

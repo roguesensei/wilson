@@ -1,0 +1,22 @@
+My prefix is `|`
+
+**Command Categories**
+```yml
+- Generic
+- Fun
+- Image
+- Voice
+- Moderator
+- Settings
+```
+**Help usage**
+Type `|help <category>` to view the commands in each category.
+```yml
+Example: |help generic
+# Not case sensitive
+```
+Type `|help <category> <command_name>` for more information on an individual command.
+```yml
+Example: |help fun dice
+# Not case sensitive
+```

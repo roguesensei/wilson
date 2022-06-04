@@ -1,0 +1,13 @@
+:white_small_square: `hello`: My first command. I wonder what it does...
+:white_small_square: `ping`: Pong!
+:white_small_square: `embed <message>`: I will embed your message for you
+:white_small_square: `image <image_url>`: I will embed an image URL for you
+:white_small_square: `release`: Get my release info
+:white_small_square: `update`: Learn about my latest update
+:white_small_square: `help`: Displays this message
+
+Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
+```yml
+Example: |help fun dice
+# Not case sensitive
+```

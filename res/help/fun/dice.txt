@@ -1,0 +1,10 @@
+Written as: `|dice <number_sides>`
+`<number_sides>` is the number of sides on the dice.
+Leaving the argument blank will default to a D6 dice.
+
+Valid Examples:
+:white_small_square: `|dice`
+:white_small_square: `|dice 10`
+
+Invalid Examples:
+:white_small_square: `|dice not_a_number`

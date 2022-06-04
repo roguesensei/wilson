@@ -1,0 +1,5 @@
+Written as: `|ping`
+
+Valid Examples:
+:white_small_square: `|ping`
+:white_small_square: `|ping Wilson`

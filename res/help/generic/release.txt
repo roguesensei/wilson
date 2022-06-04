@@ -1,0 +1,9 @@
+Written as: `|release`
+Additional characters and arguments will be ignored and the command will still work
+
+Valid Examples:
+:white_small_square: `|release`
+:white_small_square: `|release Wilson`
+
+Invalid Examples:
+:white_small_square: No invalid examples

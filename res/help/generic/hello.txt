@@ -1,0 +1,5 @@
+Written as: `|hello`
+
+Valid Examples:
+:white_small_square: `|hello`
+:white_small_square: `|hello Wilson`

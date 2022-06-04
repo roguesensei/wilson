@@ -1,0 +1,12 @@
+**Permissions Required: Kick Users**
+Written as: `|kick <@user> <reason?>`
+Kick user `<@user>` with optional reason `<reason?>`
+
+Valid Examples:
+:white_small_square: `|kick @user`
+:white_small_square: `|kick Wilson`
+
+Invalid Examples:
+:white_small_square: `|kick`
+:white_small_square: `|kick @UserNotInServer`
+:white_small_square: `|kick @user x` where `x` is greater than 7

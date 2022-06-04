@@ -1,6 +1,7 @@
 ---
 bot_settings:
   debug_mode: true
+  default_status: ""
   embed_footer: "Enjoy life, while it lasts... And remember, Don't Starve!"
   prefix: "b|"
 intents:
