@@ -3,8 +3,9 @@
 :white_small_square: `emoji <:emoji:>`: Display emoji image
 :white_small_square: `f`: Press F to pay respects
 :white_small_square: `flip`: Heads I win, Tails you lose
+:white_small_square: `guildav`: Get Guild Avatar
+:white_small_square: `guildinfo`: Displays the guild info
 :white_small_square: `lenny`: Let's be honest, everyone needs a Lenny
-:white_small_square: `serverinfo`: Displays the server info
 :white_small_square: `wilson <reaction_name> <message>`: Use a Wilson GIF
 :white_small_square: `whois <@user>`: Displays user information
 

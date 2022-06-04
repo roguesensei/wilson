@@ -13,7 +13,7 @@ python3 -m pip install -r requirements.txt
 # Windows
 py -3 -m pip install -r requirements.txt
 ```
-To run with your own bot, you'll need your discord user id `<OWNER_ID` and token `<TOKEN>`:
+To run with your own bot, you'll need your discord user id `<OWNER_ID>` and token `<TOKEN>` to include as running args:
 ```shell
 # Linux/macOS
 python3 ./main.py <OWNER_ID> <TOKEN>
