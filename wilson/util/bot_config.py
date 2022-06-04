@@ -2,13 +2,18 @@ import yaml
 
 
 class ConfigBotSettings:
-    def __init__(self, debug_mode: bool, prefix: str):
+    def __init__(self, debug_mode: bool, embed_footer: str, prefix: str):
         self._debug_mode = debug_mode
+        self._embed_footer = embed_footer
         self._prefix = prefix
 
     @property
     def debug_mode(self) -> bool:
         return self._debug_mode
+
+    @property
+    def embed_footer(self) -> str:
+        return self._embed_footer
 
     @property
     def prefix(self) -> str:
@@ -70,7 +75,11 @@ class BotConfig:
         conf_settings = conf['bot_settings']
         conf_intents = conf['intents']
 
-        self._settings = ConfigBotSettings(debug_mode=conf_settings['debug_mode'], prefix=conf_settings['prefix'])
+        self._settings = ConfigBotSettings(
+            debug_mode=conf_settings['debug_mode'],
+            embed_footer=conf_settings['embed_footer'],
+            prefix=conf_settings['prefix']
+        )
         self._intents = ConfigIntents(
             bans=bool(conf_intents['bans']),
             emojis=bool(conf_intents['emojis']),

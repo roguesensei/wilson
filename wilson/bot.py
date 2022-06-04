@@ -5,12 +5,11 @@ from discord import Intents
 from discord.ext import commands
 from wilson.util.bot_config import BotConfig
 
-
 cogs = ['wilson.cogs.generic']
 
 
 class Wilson(commands.Bot):
-    def __init__(self, owner_id: int, token:str, config_path: str = 'config.yml'):
+    def __init__(self, owner_id: int, token: str, config_path: str = 'config.yml'):
         self._config = BotConfig(config_path)
         self._token = token
 
@@ -38,9 +37,11 @@ class Wilson(commands.Bot):
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
-    @staticmethod
-    def generate_embed(title, description='') -> discord.Embed:
-        return discord.Embed(title=title, description=description, colour=0x1f0000)
+    def generate_embed(self, title, description='') -> discord.Embed:
+        embed = discord.Embed(title=title, description=description, colour=0x1f0000)
+        embed.set_footer(text=self.config.bot_settings.embed_footer, icon_url=self.user.avatar.url)
+
+        return embed
 
     async def on_ready(self):
         for cog in cogs:
@@ -50,4 +51,3 @@ class Wilson(commands.Bot):
     @property
     def config(self) -> BotConfig:
         return self._config
-

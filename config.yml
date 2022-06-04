@@ -1,7 +1,8 @@
 ---
 bot_settings:
   debug_mode: true
-  prefix: 'b|'
+  embed_footer: "Enjoy life, while it lasts... And remember, Don't Starve!"
+  prefix: "b|"
 intents:
   bans: true
   emojis: true
