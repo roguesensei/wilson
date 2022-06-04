@@ -95,34 +95,35 @@ class BotConfig:
         self.__load_config(path)
 
     def __load_config(self, path: str) -> None:
-        conf = yaml.safe_load(open(path))
+        with open(path, 'r') as f:
+            conf = yaml.safe_load(f)
 
-        conf_settings = conf['bot_settings']
-        conf_settings_presence = conf_settings['default_presence']
-        conf_intents = conf['intents']
+            conf_settings = conf['bot_settings']
+            conf_settings_presence = conf_settings['default_presence']
+            conf_intents = conf['intents']
 
-        default_presence = ConfigBotSettingsPresence(
-            activity_name=conf_settings_presence['activity_name'],
-            activity_type=conf_settings_presence['activity_type'],
-            status=conf_settings_presence['status']
-        )
+            default_presence = ConfigBotSettingsPresence(
+                activity_name=conf_settings_presence['activity_name'],
+                activity_type=conf_settings_presence['activity_type'],
+                status=conf_settings_presence['status']
+            )
 
-        self._settings = ConfigBotSettings(
-            debug_mode=conf_settings['debug_mode'],
-            default_presence=default_presence,
-            embed_footer=conf_settings['embed_footer'],
-            prefix=conf_settings['prefix']
-        )
-        self._intents = ConfigIntents(
-            bans=bool(conf_intents['bans']),
-            emojis=bool(conf_intents['emojis']),
-            guilds=bool(conf_intents['guilds']),
-            members=bool(conf_intents['members']),
-            message_content=bool(conf_intents['message_content']),
-            messages=bool(conf_intents['messages']),
-            reactions=bool(conf_intents['reactions']),
-            voice_states=conf_intents['voice_states']
-        )
+            self._settings = ConfigBotSettings(
+                debug_mode=conf_settings['debug_mode'],
+                default_presence=default_presence,
+                embed_footer=conf_settings['embed_footer'],
+                prefix=conf_settings['prefix']
+            )
+            self._intents = ConfigIntents(
+                bans=bool(conf_intents['bans']),
+                emojis=bool(conf_intents['emojis']),
+                guilds=bool(conf_intents['guilds']),
+                members=bool(conf_intents['members']),
+                message_content=bool(conf_intents['message_content']),
+                messages=bool(conf_intents['messages']),
+                reactions=bool(conf_intents['reactions']),
+                voice_states=conf_intents['voice_states']
+            )
 
     @property
     def bot_settings(self) -> ConfigBotSettings:

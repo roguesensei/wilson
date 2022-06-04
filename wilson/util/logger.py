@@ -1,4 +1,5 @@
 import time
+import traceback
 
 from enum import Enum
 from termcolor import cprint
@@ -46,6 +47,15 @@ def log(message: str, level: LogLevel = LogLevel.MESSAGE):
     print(message)
 
 
+def log_exception(exc: BaseException):
+    cprint(f'{str(exc)}:', 'red', attrs=['bold'])
+    tb = traceback.format_tb(exc.__traceback__, limit=-1)
+    if tb is not None and len(tb) > 0:
+        full = tb[0].split('\n')
+        for line in full:
+            cprint(text=line, color='red')
+
+
 def log_message(message: str):
     log(message, LogLevel.MESSAGE)
 
@@ -64,15 +74,13 @@ def log_warning(message: str):
     log(message, LogLevel.WARNING)
 
 
-def log_error(message: str, exc: Exception = None):
-    if exc is not None:
-        message += ':\n'
-        message += str(exc)
+def log_error(message: str, exc: BaseException = None):
     log(message, LogLevel.ERROR)
-
-
-def log_critical(message: str, exc: Exception = None):
     if exc is not None:
-        message += ':\n'
-        message += str(exc)
+        log_exception(exc)
+
+
+def log_critical(message: str, exc: BaseException = None):
     log(message, LogLevel.CRITICAL)
+    if exc is not None:
+        log_exception(exc)
