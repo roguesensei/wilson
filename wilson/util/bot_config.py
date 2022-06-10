@@ -3,22 +3,9 @@ import yaml
 
 
 class ConfigBotSettingsPresence:
-    def __init__(self, activity_name: str, activity_type: discord.ActivityType, status: discord.Status):
-        self._activity_name = activity_name
-        self._activity_type = activity_type
-        self._status = status
-
-    @property
-    def activity_name(self) -> str:
-        return self._activity_name
-
-    @property
-    def activity_type(self) -> discord.ActivityType:
-        return self._activity_type
-
-    @property
-    def status(self) -> discord.Status:
-        return self._status
+    activity_name: str
+    activity_type: discord.ActivityType
+    status: discord.Status
 
 
 class ConfigBotSettingsRelease:
@@ -36,78 +23,22 @@ class ConfigBotSettingsRelease:
 
 
 class ConfigBotSettings:
-    def __init__(self, debug_mode: bool, default_presence: ConfigBotSettingsPresence, embed_footer: str, prefix: str,
-                 release: ConfigBotSettingsRelease):
-        self._debug_mode = debug_mode
-        self._default_presence = default_presence
-        self._embed_footer = embed_footer
-        self._prefix = prefix
-        self._release = release
-
-    @property
-    def debug_mode(self) -> bool:
-        return self._debug_mode
-
-    @property
-    def default_presence(self) -> ConfigBotSettingsPresence:
-        return self._default_presence
-
-    @property
-    def embed_footer(self) -> str:
-        return self._embed_footer
-
-    @property
-    def prefix(self) -> str:
-        return self._prefix
-
-    @property
-    def release(self) -> ConfigBotSettingsRelease:
-        return self._release
+    debug_mode: str
+    default_presence: ConfigBotSettingsPresence
+    embed_footer: str
+    prefix: str
+    release: ConfigBotSettingsRelease
 
 
 class ConfigIntents:
-    def __init__(self, bans: bool, emojis: bool, guilds: bool, members: bool, message_content: bool, messages: bool,
-                 reactions: bool, voice_states: bool):
-        self._bans = bans
-        self._emojis = emojis
-        self._guilds = guilds
-        self._members = members
-        self._message_content = message_content
-        self._messages = messages
-        self._reactions = reactions
-        self._voice_states = voice_states
-
-    @property
-    def bans(self) -> bool:
-        return self._bans
-
-    @property
-    def emojis(self) -> bool:
-        return self._emojis
-
-    @property
-    def guilds(self) -> bool:
-        return self._guilds
-
-    @property
-    def members(self) -> bool:
-        return self._members
-
-    @property
-    def message_content(self) -> bool:
-        return self._message_content
-
-    @property
-    def messages(self) -> bool:
-        return self._messages
-
-    @property
-    def reactions(self) -> bool:
-        return self._reactions
-
-    @property
-    def voice_states(self) -> bool:
-        return self._voice_states
+    bans: bool
+    emojis: bool
+    guilds: bool
+    members: bool
+    message_content: bool
+    messages: bool
+    reactions: bool
+    voice_states: bool
 
 
 class BotConfig:
@@ -123,11 +54,11 @@ class BotConfig:
             conf_settings_release = conf_settings['release']
             conf_intents = conf['intents']
 
-            default_presence = ConfigBotSettingsPresence(
-                activity_name=conf_settings_presence['activity_name'],
-                activity_type=conf_settings_presence['activity_type'],
-                status=conf_settings_presence['status']
-            )
+            default_presence = ConfigBotSettingsPresence()
+            default_presence.activity_name = conf_settings_presence['activity_name']
+            default_presence.activity_type = conf_settings_presence['activity_type']
+            default_presence.status = conf_settings_presence['status']
+
             release = ConfigBotSettingsRelease()
             release.version = ConfigBotSettingsRelease.Version()
 
@@ -137,23 +68,22 @@ class BotConfig:
             release.version.patch = conf_settings_release['version']['patch']
             release.version.suffix = conf_settings_release['version']['suffix']
 
-            self._settings = ConfigBotSettings(
-                debug_mode=conf_settings['debug_mode'],
-                default_presence=default_presence,
-                embed_footer=conf_settings['embed_footer'],
-                prefix=conf_settings['prefix'],
-                release=release
-            )
-            self._intents = ConfigIntents(
-                bans=bool(conf_intents['bans']),
-                emojis=bool(conf_intents['emojis']),
-                guilds=bool(conf_intents['guilds']),
-                members=bool(conf_intents['members']),
-                message_content=bool(conf_intents['message_content']),
-                messages=bool(conf_intents['messages']),
-                reactions=bool(conf_intents['reactions']),
-                voice_states=conf_intents['voice_states']
-            )
+            self._settings = ConfigBotSettings()
+            self._settings.debug_mode = conf_settings['debug_mode']
+            self._settings.default_presence = default_presence
+            self._settings.embed_footer = conf_settings['embed_footer']
+            self._settings.prefix = conf_settings['prefix']
+            self._settings.release = release
+
+            self._intents = ConfigIntents()
+            self._intents.bans = bool(conf_intents['bans'])
+            self._intents.emojis = bool(conf_intents['emojis'])
+            self._intents.guilds = bool(conf_intents['guilds'])
+            self._intents.members = bool(conf_intents['members'])
+            self._intents.message_content = bool(conf_intents['message_content'])
+            self._intents.messages = bool(conf_intents['messages'])
+            self._intents.reactions = bool(conf_intents['reactions'])
+            self._intents.voice_states = conf_intents['voice_states']
 
     @property
     def bot_settings(self) -> ConfigBotSettings:
