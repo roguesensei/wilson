@@ -1,0 +1,5 @@
+Written as: `|lenny`
+
+Valid Examples:
+:white_small_square: `|lenny`
+:white_small_square: `|lenny Wilson`

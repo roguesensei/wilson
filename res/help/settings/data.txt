@@ -1,0 +1,6 @@
+For server-specific bot settings, some data collection is required in order to make these settings function. Data is not collected by default and users with the "Manage Server" permission can allow this by typing `|optin`. On the flipside, you can opt out any time by typing `|optout`
+
+**What gets collected?**
+Only the bare minimum gets stored, and that is the server ID, and the list of user IDs associated with the server. In the case of log channels or default roles, only the ID gets stored, and if it is changed, it does not get audited or logged.
+
+But hey, you're a gamer, you know how the internet works. Worse data gets collected...

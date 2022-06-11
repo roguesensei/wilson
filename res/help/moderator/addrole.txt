@@ -1,0 +1,9 @@
+Written as: `|addrole <@user> <@role>`
+`<@user>` is the user to give the role `<@role>` to
+Command aliases: `|giverole`
+
+Valid Examples:
+:white_small_square: `|addrole @user member`
+
+Invalid Examples:
+:white_small_square: `|addrole`

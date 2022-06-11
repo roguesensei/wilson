@@ -1,0 +1,9 @@
+Written as: `|nickname <@user> <nickname>`
+Command aliases: `|nick`
+
+Valid Examples:
+:white_small_square: `|nickname @user Wilson`
+
+Invalid Examples:
+:white_small_square: `|nickname`
+:white_small_square: `|nickname @UserNotInServer Here`

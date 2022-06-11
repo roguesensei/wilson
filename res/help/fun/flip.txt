@@ -1,0 +1,5 @@
+Written as: `|flip`
+
+Valid Examples:
+:white_small_square: `|flip`
+:white_small_square: `|flip Wilson`

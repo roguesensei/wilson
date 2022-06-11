@@ -1,0 +1,9 @@
+**Permissons Required: Ban Users**
+Written as: `|unban <user_id>`
+
+Valid Examples:
+:white_small_square: `|unban 123456789012345678`
+
+Invalid Examples:
+:white_small_square: `|unban`
+:white_small_square: `|unban user`

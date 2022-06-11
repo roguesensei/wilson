@@ -1,0 +1,11 @@
+**Permissons Required: Ban Users**
+Written as: `|ban <@user> <reason?>`
+Ban user `<@user>` with optional reason `<reason?>`
+
+Valid Examples:
+:white_small_square: `|ban @user reason`
+:white_small_square: `|ban Wilson`
+
+Invalid Examples:
+:white_small_square: `|ban`
+:white_small_square: `|ban @UserNotInServer`

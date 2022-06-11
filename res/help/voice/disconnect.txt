@@ -1,0 +1,6 @@
+Written as: `|disconnect`
+Command aliases: `|dc |leave`
+
+Valid Examples:
+:white_small_square: `|disconnect`
+:white_small_square: `|disconnect Wilson`

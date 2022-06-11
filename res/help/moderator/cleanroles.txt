@@ -1,0 +1,5 @@
+Written as: `|cleanroles`
+
+Valid Examples:
+:white_small_square: `|cleanroles`
+:white_small_square: `|cleanroles Wilson`

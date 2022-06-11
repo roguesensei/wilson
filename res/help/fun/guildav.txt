@@ -1,0 +1,6 @@
+Written as: `|guildav`
+Command aliases: `|serverav`
+
+Valid Examples:
+:white_small_square: `|guildav`
+:white_small_square: `|serverav Wilson World`

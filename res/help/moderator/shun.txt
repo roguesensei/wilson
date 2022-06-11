@@ -1,0 +1,9 @@
+Written as: `|shun <@user>`
+Command aliases: `|mute |silence |block`
+
+Valid Examples:
+:white_small_square: `|shun @user`
+
+Invalid Examples:
+:white_small_square: `|shun`
+:white_small_square: `|shun @UserNotInServer`

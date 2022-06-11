@@ -1,0 +1,6 @@
+Written as: `|guildinfo`
+Command aliases: `|serverinfo`
+
+Valid Examples:
+:white_small_square: `|guildinfo`
+:white_small_square: `|serverinfo Wilson World`

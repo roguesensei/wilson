@@ -1,0 +1,13 @@
+**Permissions Required: Manage Server**
+Written as: `|swear <action> <swear_word> <swear_edit?>`
+`<action>` is specified action which can include:
+
+:white_small_square: `add` *Create a swear with `<swear_word>` as the swear word*
+
+:white_small_square: `edit` *Edit a swear with `<swear_word>` as the old swear word and `<swear_edit?>` as the new swear word*
+
+:white_small_square: `delete` *Delete a swear with `<swear_word>` as the swear word*
+
+:white_small_square: `list` *Get list of swears*
+
+You can have up to 10 swears by default

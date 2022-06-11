@@ -1,0 +1,6 @@
+Written as: `|summon`
+Command aliases: `|connect |join`
+
+Valid Examples:
+:white_small_square: `|summon`
+:white_small_square: `|summon Wilson`
