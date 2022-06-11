@@ -23,7 +23,7 @@ class ConfigBotSettingsRelease:
 
 
 class ConfigBotSettings:
-    debug_mode: str
+    debug_mode: bool
     default_presence: ConfigBotSettingsPresence
     embed_footer: str
     prefix: str
@@ -69,7 +69,7 @@ class BotConfig:
             release.version.suffix = conf_settings_release['version']['suffix']
 
             self._settings = ConfigBotSettings()
-            self._settings.debug_mode = conf_settings['debug_mode']
+            self._settings.debug_mode = bool(conf_settings['debug_mode'])
             self._settings.default_presence = default_presence
             self._settings.embed_footer = conf_settings['embed_footer']
             self._settings.prefix = conf_settings['prefix']
