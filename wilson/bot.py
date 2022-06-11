@@ -7,7 +7,11 @@ from discord.ext import commands
 from discord.ext.commands import errors
 from wilson.util.bot_config import BotConfig
 
-cogs = ['wilson.cogs.generic', 'wilson.cogs.fun']
+cogs = [
+    'wilson.cogs.generic',
+    'wilson.cogs.fun',
+    'wilson.cogs.nekos'
+]
 
 
 class Wilson(commands.Bot):
