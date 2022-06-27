@@ -9,11 +9,7 @@ bot_settings:
   prefix: "b|"
   release:
     update_name: "Update 2.0"
-    version:
-      major: 2
-      minor: 0
-      patch: 0
-      suffix: "WILSON"
+    version: "2.0.0 WILSON"
 intents:
   bans: true
   emojis: true
