@@ -12,6 +12,7 @@ from wilson.util.bot_config import BotConfig
 cogs = [
     'wilson.cogs.generic',
     'wilson.cogs.fun',
+    'wilson.cogs.moderator',
     'wilson.cogs.nekos'
 ]
 

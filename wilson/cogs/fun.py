@@ -57,7 +57,7 @@ class Fun(commands.Cog):
     @commands.command()
     async def flip(self, ctx: commands.Context) -> None:
         coin = ['**Heads!**', '**Tails!**']
-        await ctx.message.reply(random.choice(coin))
+        await ctx.reply(random.choice(coin))
 
     @commands.command(aliases=['d'])
     async def dice(self, ctx: commands.Context, faces: int = 6) -> None:
