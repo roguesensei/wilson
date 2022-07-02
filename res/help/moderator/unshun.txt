@@ -1,0 +1,9 @@
+Written as: `|unshun <@user>`
+Command aliases: `|unmute |untimeout`
+
+Valid Examples:
+:white_small_square: `|unshun @user`
+
+Invalid Examples:
+:white_small_square: `|unshun`
+:white_small_square: `|unshun @UserNotInServer`
