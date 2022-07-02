@@ -117,6 +117,49 @@ class Moderator(commands.Cog):
         else:
             await ctx.reply(f'**{user.display_name}** is already unshunned')
 
+    @commands.command()
+    @commands.guild_only()
+    @commands.has_permissions(kick_members=True)
+    async def kick(self, ctx, user: discord.Member, *, reason='Not Specified'):
+        author = ctx.message.author
+        server = ctx.guild
+        if h.compare_roles(author, user):
+            try:
+                await user.kick(reason=reason)
+                kick_message = f'**{user}** has been kicked from **{server.name}**.\n**Reason:** {reason}'
+                await author.send(kick_message)
+            except Exception as exc:
+                log.log_error('Kick error', exc)
+                await author.send('Could not kick member from the server.')
+        else:
+            await ctx.send('Cannot kick someone with a role higher than your own')
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.has_permissions(ban_members=True)
+    async def ban(self, ctx, user: discord.Member, *, reason='Not Specified'):
+        author = ctx.message.author
+        if h.compare_roles(author, user):
+            try:
+                await ctx.guild.ban(user, reason=reason)
+            except Exception as exc:
+                log.log_error('Ban error', exc)
+                await author.reply('Could not ban member from the server.')
+        else:
+            await ctx.reply('Cannot ban someone with a role higher than your own')
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.has_permissions(ban_members=True)
+    async def unban(self, ctx, user_id):
+        author = ctx.message.author
+        try:
+            await ctx.guild.unban(discord.Object(id=user_id))
+            await author.reply(f'<@{user_id}> has been unbanned from **{ctx.guild}**\nBe sure to send them an invite.')
+        except Exception as exc:
+            log.log_error('Unban error', exc)
+            await author.reply('Could not unban member from the server.')
+
 
 async def setup(bot: Wilson):
     await bot.add_cog(Moderator(bot))
