@@ -10,6 +10,7 @@ from discord.ext.commands import errors
 from wilson.util.bot_config import BotConfig
 
 cogs = [
+    'wilson.cogs.admin',
     'wilson.cogs.generic',
     'wilson.cogs.fun',
     'wilson.cogs.moderator',

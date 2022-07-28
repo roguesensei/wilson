@@ -1,5 +1,4 @@
 import discord
-
 import wilson.util.helpers as h
 
 from discord.ext import commands
