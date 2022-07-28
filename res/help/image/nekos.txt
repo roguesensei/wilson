@@ -1,19 +1,14 @@
 **Nekos Life Commands**
 These can include a username as an action to the specified member
 ```yml
-- 8ball
-- baka
+- 8ball/ball/fortune
 - cuddle
 - hug
 - kiss/mwah/smooch
-- lizard
-- meow/cat/nya
 - pat/pet/pap
-- poke
-- slap
+- slap/smack
 - smug
 - tickle
-- woof/dog/inu
 ```
 In addition is the `neko/catgirl` command, which can include a `gif` argument. As well as `kemono/animalgirl` and `kitsune/foxgirl` (Image only)
 **Examples**
@@ -21,5 +16,5 @@ In addition is the `neko/catgirl` command, which can include a `gif` argument. A
 - neko
 - catgirl gif
 ```
-**Where are the NSFW Commands?**
-The nekos.life API removed the NSFW endpoints. For the new NSFW commands using the waifu.im API, type `|help image waifu`
+**Nekos Fun Commands**
+The nekos.life API removed the NSFW endpoints. The new NSFW commands utilize the nekos.fun API

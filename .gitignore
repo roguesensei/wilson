@@ -112,5 +112,8 @@ venv.bak/
 ## Directory-based project format:
 .idea/
 
+# Wilson Directory
+.wilson/
+
 # Config
 #config.yml

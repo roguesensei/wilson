@@ -1,4 +1,5 @@
 git+https://github.com/Rapptz/discord.py#egg=discord.py
 pyyaml
 requests
+rsa
 termcolor

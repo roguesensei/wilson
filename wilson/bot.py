@@ -1,6 +1,8 @@
 import discord
+import os
 import time
 import wilson.util.logger as log
+from wilson.util.encryption import generate_keys, write_settings, read_settings
 
 from discord import Intents
 from discord.ext import commands
@@ -10,6 +12,7 @@ from wilson.util.bot_config import BotConfig
 cogs = [
     'wilson.cogs.generic',
     'wilson.cogs.fun',
+    'wilson.cogs.moderator',
     'wilson.cogs.nekos'
 ]
 
@@ -37,6 +40,10 @@ class Wilson(commands.Bot):
             intents=bot_intents
         )
         self.remove_command('help')
+
+        if not os.path.exists('.wilson'):
+            log.log_warning('Created new hidden .wilson directory')
+            os.mkdir('.wilson')
 
     def run_bot(self) -> None:
         try:

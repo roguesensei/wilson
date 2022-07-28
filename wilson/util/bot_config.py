@@ -9,17 +9,8 @@ class ConfigBotSettingsPresence:
 
 
 class ConfigBotSettingsRelease:
-    class Version:
-        major: int
-        minor: int
-        patch: int
-        suffix: str
-
-        def __str__(self):
-            return f'V{self.major}.{self.minor}.{self.patch} {self.suffix}'
-
     update_name: str
-    version: Version
+    version: str
 
 
 class ConfigBotSettings:
@@ -60,13 +51,8 @@ class BotConfig:
             default_presence.status = conf_settings_presence['status']
 
             release = ConfigBotSettingsRelease()
-            release.version = ConfigBotSettingsRelease.Version()
-
             release.update_name = conf_settings_release['update_name']
-            release.version.major = conf_settings_release['version']['major']
-            release.version.minor = conf_settings_release['version']['minor']
-            release.version.patch = conf_settings_release['version']['patch']
-            release.version.suffix = conf_settings_release['version']['suffix']
+            release.version = conf_settings_release['version']
 
             self._settings = ConfigBotSettings()
             self._settings.debug_mode = bool(conf_settings['debug_mode'])

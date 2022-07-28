@@ -1,5 +1,5 @@
 **Permissions Required: Manage Messages**
-Written as: `|sweep  <number 2-100>`
+Written as: `|sweep  <number? 2-100: default 20>`
 Alias: `|prune`
 
 Valid Examples:
