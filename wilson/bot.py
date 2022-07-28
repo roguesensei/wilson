@@ -2,7 +2,6 @@ import discord
 import os
 import time
 import wilson.util.logger as log
-from wilson.util.encryption import generate_keys, write_settings, read_settings
 
 from discord import Intents
 from discord.ext import commands
@@ -13,6 +12,7 @@ cogs = [
     'wilson.cogs.admin',
     'wilson.cogs.generic',
     'wilson.cogs.fun',
+    'wilson.cogs.guild',
     'wilson.cogs.moderator',
     'wilson.cogs.nekos'
 ]
