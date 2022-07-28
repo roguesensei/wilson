@@ -7,6 +7,6 @@ Before contributing, make sure you have done the following:
 - In the case of bugs, you are able to provide reproduction steps with examples
 - You have read/understood the License (see below)
 ## Pull Requests
-All PRs are merged into the `rolling` branch before they make their way to the `stable` branch. Make sure you open/link any open issues to help identify how the PR is contributing.
+All PRs are squach merged into the `main` branch. Make sure you open/link any open issues to help identify how the PR is contributing.
 # License
 By contributing, forking or modifying `Wilson`, you agree that your changes will be licensed under the `GNU General Public License v3.0` (Please read [LICENSE](https://gitlab.com/roguesensei/wilson/-/blob/stable/LICENSE) for more details).
