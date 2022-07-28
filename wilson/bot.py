@@ -2,6 +2,7 @@ import discord
 import os
 import time
 import wilson.util.logger as log
+import yaml
 
 from discord import Intents
 from discord.ext import commands
@@ -13,9 +14,11 @@ cogs = [
     'wilson.cogs.generic',
     'wilson.cogs.fun',
     'wilson.cogs.guild',
-    'wilson.cogs.moderator',
-    'wilson.cogs.nekos'
+    'wilson.cogs.moderator'
+    # 'wilson.cogs.nekos.life'
 ]
+
+extensions = ['Nekos.Life']
 
 
 class Wilson(commands.Bot):
@@ -23,6 +26,7 @@ class Wilson(commands.Bot):
         self._config = BotConfig(config_path)
         self._token = token
         self._online_time = 0
+        self.wilson_extensions = {}
 
         intents_conf = self.config.intents
         bot_intents = Intents(
@@ -69,6 +73,21 @@ class Wilson(commands.Bot):
     async def on_ready(self) -> None:
         for cog in cogs:
             await self.load_extension(cog)
+
+        for extension_dir in os.listdir('wilson/extensions'):
+            extension_path = f'wilson/extensions/{extension_dir}'
+            items = os.listdir(extension_path)
+
+            if 'extension.yml' in items:
+                config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
+                extension_name = config['name']
+                if extension_name in extensions:
+                    log.log_info(f'Loaded extension: {extension_name}')
+                    key = extension_name.lower()
+
+                    self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
+                                                   'help': f'{extension_path}/help/'}
+                    await self.load_extension(config['cog'])
 
         default_presence = self.config.bot_settings.default_presence
         default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)

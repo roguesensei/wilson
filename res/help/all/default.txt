@@ -8,7 +8,7 @@ My prefix is `|`
 - Voice
 - Moderator
 - Settings
-```
+```{}
 **Help usage**
 Type `|help <category>` to view the commands in each category.
 ```yml

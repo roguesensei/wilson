@@ -81,14 +81,24 @@ class Generic(commands.Cog):
     @commands.command()
     async def help(self, ctx: commands.Context, help_category: str = 'all', help_command: str = 'default') -> None:
         try:
-            with open(f'./res/help/{help_category.lower()}/{help_command.lower()}.txt') as f:
+            base_dir = self._bot.wilson_extensions[help_category]['help'] if help_category in self._bot.wilson_extensions else './res/help'
+
+            with open(f'{base_dir}/{help_category.lower()}/{help_command.lower()}.txt') as f:
                 if help_category == 'all':
                     help_command = 'Help'  # Just for title
                 elif help_command == 'default':
                     help_command = f'{help_category} commands'
 
+                extensions_body = ''
+                if len(self._bot.wilson_extensions) > 0:
+                    extensions_body += '\n**Extensions**\n```yml\n'
+                    for key in self._bot.wilson_extensions:
+                        extension = self._bot.wilson_extensions[key]["name"]
+                        extensions_body += f'- {extension}\n'
+                    extensions_body += '\n```'
+
                 bot_avatar = self._bot.user.avatar.url
-                body = f.read()
+                body = f.read().format(extensions_body)
 
                 embed = self._bot.generate_embed(title=f'{help_command.title()}!', author=ctx.author, description=body,
                                                  thumbnail_url=bot_avatar)
