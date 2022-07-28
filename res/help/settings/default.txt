@@ -3,8 +3,8 @@
 You can opt in to use server-specific settings, which will require some data collection, by typing `|optin` (Requires "manage server" permission)
 Type `|help settings data` for more information on data collection.
 
-**Togglables**
-Toggle togglable settings with `|toggle <command_name>` from the **Togglable** list
+**Toggles**
+Toggle togglable settings with `|toggle <command_name>` from the **Toggles** list
 
 **Welcome Message**
 Set Welcome/Level up Message with `|welcome_message <message>` where `<message>` is a message with the option to include mark-up parameters:

@@ -115,5 +115,8 @@ venv.bak/
 # Wilson Directory
 .wilson/
 
+# Extensions directory
+#wilson/extensions/
+
 # Config
 #config.yml
