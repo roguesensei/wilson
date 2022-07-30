@@ -1,9 +1,0 @@
-:white_small_square: `summon`: Summon me to the voice channel you are in
-:white_small_square: `disconnect`: Disconnects me from the voice channel
-:white_small_square: `sing`: I will sing to you in a voice channel
-
-Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
-```yml
-Example: |help fun dice
-# Not case sensitive
-```

@@ -21,3 +21,7 @@ python3 ./main.py <OWNER_ID> <TOKEN>
 # Windows
 py -3 ./main.py <OWNER_ID> <TOKEN>
 ```
+You can also modify the `run.sh` file provided (recommended). After updating, type:
+```shell
+git update-index --assume-unchanged run.sh
+```

@@ -1,15 +1,15 @@
 ---
 bot_settings:
-  debug_mode: true
+  debug_mode: false
   default_presence:
-    activity_name: "for b|"
+    activity_name: "for |"
     activity_type: 3 # See discord.ActivityType
     status: "dnd" # See discord.Status
   embed_footer: "Enjoy life, while it lasts... And remember, Don't Starve!"
-  prefix: "b|"
+  prefix: "|"
   release:
     update_name: "Update 2.0"
-    version: "2.0.0 WILSON"
+    version: "2.0 BETA"
 intents:
   bans: true
   emojis: true

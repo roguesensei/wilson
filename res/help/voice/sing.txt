@@ -1,5 +1,0 @@
-Written as: `|sing`
-
-Valid Examples:
-:white_small_square: `|sing`
-:white_small_square: `|sing Wilson`

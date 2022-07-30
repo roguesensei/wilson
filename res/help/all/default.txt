@@ -4,8 +4,6 @@ My prefix is `|`
 ```yml
 - Generic
 - Fun
-- Image
-- Voice
 - Moderator
 - Settings
 ```{}
