@@ -15,7 +15,6 @@ cogs = [
     'wilson.cogs.fun',
     'wilson.cogs.guild',
     'wilson.cogs.moderator'
-    # 'wilson.cogs.nekos.life'
 ]
 
 extensions = ['Nekos.Life']
@@ -74,6 +73,12 @@ class Wilson(commands.Bot):
         for cog in cogs:
             await self.load_extension(cog)
 
+        default_presence = self.config.bot_settings.default_presence
+        default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)
+
+        await self.change_presence(activity=default_activity, status=default_presence.status)
+        self._online_time = time.time()
+
         for extension_dir in os.listdir('wilson/extensions'):
             extension_path = f'wilson/extensions/{extension_dir}'
             items = os.listdir(extension_path)
@@ -82,18 +87,11 @@ class Wilson(commands.Bot):
                 config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
                 extension_name = config['name']
                 if extension_name in extensions:
-                    log.log_info(f'Loaded extension: {extension_name}')
                     key = extension_name.lower()
 
                     self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
                                                    'help': f'{extension_path}/help/'}
                     await self.load_extension(config['cog'])
-
-        default_presence = self.config.bot_settings.default_presence
-        default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)
-
-        await self.change_presence(activity=default_activity, status=default_presence.status)
-        self._online_time = time.time()
 
         log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
         log.log_message('Wilson appears...')
