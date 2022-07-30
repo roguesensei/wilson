@@ -115,5 +115,8 @@ venv.bak/
 # Wilson Directory
 .wilson/
 
+# Run shell script
+./run.sh
+
 # Config
 #config.yml
