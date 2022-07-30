@@ -1,3 +1,6 @@
+import asyncio
+import sys
+
 import discord
 import os
 
@@ -13,7 +16,11 @@ class Admin(commands.Cog):
     @commands.is_owner()
     async def pstart(self, ctx: commands.Context, type: str = 'hard'):
         if type.lower() == 'hard':
-            pass
+            await ctx.send('Initiating Hard pstart...')
+            if ctx.voice_client is not None:
+                await ctx.voice_client.disconnect(force=True)
+            os.system('./run.sh')
+            sys.exit()
         elif type.lower() == 'soft':
             await ctx.reply('Initiating Soft pstart...')
             presence = self._bot.config.bot_settings.default_presence
