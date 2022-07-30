@@ -1,9 +1,0 @@
-Written as: `|imgur <tag_search>`
-`<tag_search>` is a single imgur tag to search by, multiple tags are not yet supported
-
-Valid Examples:
-:white_small_square: `|imgur <tag>`
-
-Invalid Examples:
-:white_small_square: `|imgur`
-:white_small_square: `|imgur <tag1>, <tag2>`
