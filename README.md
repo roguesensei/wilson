@@ -21,3 +21,4 @@ python3 ./main.py <OWNER_ID> <TOKEN>
 # Windows
 py -3 ./main.py <OWNER_ID> <TOKEN>
 ```
+You can also modify the `run.sh` file provided (recommended)

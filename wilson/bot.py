@@ -8,6 +8,7 @@ from discord import Intents
 from discord.ext import commands
 from discord.ext.commands import errors
 from wilson.util.bot_config import BotConfig
+from wilson.util.guild_settings import GuildSettings
 
 cogs = [
     'wilson.cogs.admin',
@@ -16,8 +17,6 @@ cogs = [
     'wilson.cogs.guild',
     'wilson.cogs.moderator'
 ]
-
-extensions = ['Nekos.Life']
 
 
 class Wilson(commands.Bot):
@@ -79,7 +78,10 @@ class Wilson(commands.Bot):
         await self.change_presence(activity=default_activity, status=default_presence.status)
         self._online_time = time.time()
 
-        for extension_dir in os.listdir('wilson/extensions'):
+        if not os.path.exists('.wilson/extensions'):
+            os.mkdir('.wilson/extensions')
+
+        for extension_dir in os.listdir('.wilson/extensions'):
             extension_path = f'wilson/extensions/{extension_dir}'
             items = os.listdir(extension_path)
 
@@ -95,6 +97,28 @@ class Wilson(commands.Bot):
 
         log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
         log.log_message('Wilson appears...')
+
+    async def on_member_join(self, member: discord.Member) -> None:
+        guild = member.guild
+        settings = GuildSettings.get_settings(guild.id)
+
+        if settings.welcome_actions:
+            if settings.welcome_channel_id != 0:
+                channel = guild.get_channel(settings.welcome_channel_id)
+                if channel is not None:
+                    message_string = settings.welcome_message
+                    message_string = message_string.replace('[@user]', f'<@{member.id}>')
+                    message_string = message_string.replace('[!user]', member.display_name)
+                    message_string = message_string.replace('[!server]', guild.name)
+
+                    await channel.send(message_string)
+            if settings.autorole_id != 0:
+                role = guild.get_role(settings.autorole_id)
+                if role is not None:
+                    await member.add_roles(role)
+
+    async def on_command(self, ctx: commands.Context):
+        log.log_debug(f'{ctx.message.clean_content}')
 
     async def on_command_error(self, ctx: commands.Context, exc: errors.CommandError) -> None:
         if isinstance(exc, errors.CommandNotFound):

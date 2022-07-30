@@ -1,0 +1,1 @@
+python3 main.py <OWNER_ID> <TOKEN>
