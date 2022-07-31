@@ -131,7 +131,7 @@ welcome_actions: {settings.welcome_actions}
     @commands.command()
     @commands.guild_only()
     @commands.has_permissions(manage_guild=True)
-    async def welcome_message(self, ctx: commands.Context, welcome_message: str):
+    async def welcome_message(self, ctx: commands.Context, *, welcome_message: str):
         guild_id = ctx.guild.id
         prefix = self._bot.config.bot_settings.prefix
         settings = GuildSettings.get_settings(guild_id)
