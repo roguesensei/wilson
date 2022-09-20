@@ -24,18 +24,6 @@ class Wilson(commands.Bot):
         self._config = config
         self._online_time = 0
         self.wilson_extensions = {}
-
-        # intents_conf = self.config.intents
-        # bot_intents = Intents(
-        #     bans=intents_conf.bans,
-        #     emojis=intents_conf.emojis,
-        #     guilds=intents_conf.guilds,
-        #     members=intents_conf.members,
-        #     message_content=intents_conf.message_content,
-        #     messages=intents_conf.messages,
-        #     reactions=intents_conf.reactions,
-        #     voice_states=intents_conf.voice_states
-        # )
         super().__init__(
             command_prefix=self._config.bot_settings.prefix, case_insensitive=True,
             owner_id=self._config.bot_settings.owner_id,
