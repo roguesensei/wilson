@@ -20,27 +20,26 @@ cogs = [
 
 
 class Wilson(commands.Bot):
-    def __init__(self, owner_id: int, token: str, config_path: str = 'config.yml'):
-        self._config = BotConfig(config_path)
-        self._token = token
+    def __init__(self, config: BotConfig):
+        self._config = config
         self._online_time = 0
         self.wilson_extensions = {}
 
-        intents_conf = self.config.intents
-        bot_intents = Intents(
-            bans=intents_conf.bans,
-            emojis=intents_conf.emojis,
-            guilds=intents_conf.guilds,
-            members=intents_conf.members,
-            message_content=intents_conf.message_content,
-            messages=intents_conf.messages,
-            reactions=intents_conf.reactions,
-            voice_states=intents_conf.voice_states
-        )
+        # intents_conf = self.config.intents
+        # bot_intents = Intents(
+        #     bans=intents_conf.bans,
+        #     emojis=intents_conf.emojis,
+        #     guilds=intents_conf.guilds,
+        #     members=intents_conf.members,
+        #     message_content=intents_conf.message_content,
+        #     messages=intents_conf.messages,
+        #     reactions=intents_conf.reactions,
+        #     voice_states=intents_conf.voice_states
+        # )
         super().__init__(
-            command_prefix=self.config.bot_settings.prefix, case_insensitive=True,
-            owner_id=owner_id,
-            intents=bot_intents
+            command_prefix=self._config.bot_settings.prefix, case_insensitive=True,
+            owner_id=self._config.bot_settings.owner_id,
+            intents=self._config.intents
         )
         self.remove_command('help')
 
@@ -48,10 +47,12 @@ class Wilson(commands.Bot):
             log.log_warning('Created new hidden .wilson directory')
             os.mkdir('.wilson')
 
+        #self.tree = app_commands.CommandTree(self)
+
     def run_bot(self) -> None:
         try:
             log.log_info('Starting bot', self.config.bot_settings.debug_mode)
-            self.run(self._token)
+            self.run(self.config.bot_settings.bot_token)
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
@@ -78,17 +79,15 @@ class Wilson(commands.Bot):
         await self.change_presence(activity=default_activity, status=default_presence.status)
         self._online_time = time.time()
 
-        if not os.path.exists('.wilson/extensions'):
-            os.mkdir('.wilson/extensions')
+        if os.path.exists('extensions'):
+            for extension_dir in os.listdir('extensions'):
+                extension_path = f'extensions/{extension_dir}'
+                items = os.listdir(extension_path)
 
-        for extension_dir in os.listdir('.wilson/extensions'):
-            extension_path = f'wilson/extensions/{extension_dir}'
-            items = os.listdir(extension_path)
-
-            if 'extension.yml' in items:
-                config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
-                extension_name = config['name']
-                if extension_name in extensions:
+                if 'extension.yml' in items:
+                    config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
+                    extension_name = config['name']
+                    # if extension_name in :
                     key = extension_name.lower()
 
                     self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
@@ -97,6 +96,10 @@ class Wilson(commands.Bot):
 
         log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
         log.log_message('Wilson appears...')
+
+    # async def setup_hook(self) -> None:
+        # self.tree.copy_global_to(guild=discord.Object(id=...))
+        # await self.tree.sync(guild=discord.Object(id=...))
 
     async def on_member_join(self, member: discord.Member) -> None:
         guild = member.guild

@@ -1,0 +1,33 @@
+"""File generated automatically"""
+import discord
+
+from wilson.util.bot_config import *
+
+
+# Default bot presence
+default_presence = BotPresence()
+default_presence.activity_name = 'type =help'
+default_presence.activity_type = discord.ActivityType.playing
+default_presence.status = discord.Status.online
+
+# Bot release information (Version control)
+release = BotRelease()
+release.update_name = 'My first update'
+release.version = '1.0'
+
+# General bot settings
+bot_settings = BotSettings()
+bot_settings.owner_id = 0  # Discord User ID
+bot_settings.bot_token = ''  # Bot token assigned from developer portal
+bot_settings.debug_mode = False
+bot_settings.default_presence = default_presence
+bot_settings.embed_footer = 'Happy to help!' # Footer appended on the end of embeds by default
+bot_settings.prefix = '='
+bot_settings.release = release
+
+# Bot intents
+intents = discord.Intents.default()
+
+bot_config = BotConfig()
+bot_config.bot_settings = bot_settings
+bot_config.intents = intents

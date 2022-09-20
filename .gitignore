@@ -112,11 +112,9 @@ venv.bak/
 ## Directory-based project format:
 .idea/
 
-# Wilson Directory
+# Wilson Directories
 .wilson/
-
-# Run shell script
-./run.sh
+extensions/
 
 # Config
-#config.yml
+config.py

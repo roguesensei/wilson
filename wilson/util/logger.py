@@ -2,7 +2,6 @@ import time
 import traceback
 
 from enum import Enum
-from termcolor import cprint
 
 
 class LogLevel(Enum):
@@ -16,44 +15,29 @@ class LogLevel(Enum):
 
 def log(message: str, level: LogLevel = LogLevel.MESSAGE):
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-    cprint(f'{timestamp}', 'cyan', attrs=['bold'], end='')
-    cprint(' >> ', 'magenta', end='')
 
-    level_colour = 'white'
     level_text = '[MESSAGE]'
-
     if level == LogLevel.INFO:
-        level_colour = 'blue'
         level_text = '[INFO]'
     elif level == LogLevel.DEBUG:
-        level_colour = 'green'
         level_text = '[DEBUG]'
     elif level == LogLevel.WARNING:
-        level_colour = 'yellow'
         level_text = '[WARNING]'
     elif level == LogLevel.ERROR:
-        level_colour = 'red'
         level_text = '[ERROR]'
     elif level == LogLevel.CRITICAL:
-        level_colour = 'white'
         level_text = '[CRITICAL]'
 
-    if not level == LogLevel.CRITICAL:
-        cprint(level_text, level_colour, attrs=['bold'], end='')
-    else:
-        cprint(level_text, level_colour, 'on_red', attrs=['bold'], end='')
-
-    cprint(' >> ', 'magenta', end='')
-    print(message)
+    print(f'{timestamp} >> {level_text} >> {message}')
 
 
 def log_exception(exc: BaseException):
-    cprint(f'{str(exc)}:', 'red', attrs=['bold'])
+    print(f'{str(exc)}:')
     tb = traceback.format_tb(exc.__traceback__, limit=-1)
     if tb is not None and len(tb) > 0:
         full = tb[0].split('\n')
         for line in full:
-            cprint(text=line, color='red')
+            print(line)
 
 
 def log_message(message: str):
