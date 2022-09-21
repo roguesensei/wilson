@@ -16,7 +16,7 @@ python3 -m pip install -r requirements.txt
 py -3 -m pip install -r requirements.txt
 ```
 ## Configuring and Running
-To run with your own bot, you'll need your discord user id and bot token. You will also need to create a configuration file named `config.py`, either by copying the `config.def.txt` file and renaming it, or simply running the `main.py` file, to automatically generate it.
+To run with your own bot, you'll need your discord user id and bot token. You will also need to create a configuration file named `config.py`, either by copying the `res/config.def.txt` file and renaming it, or simply running the `main.py` file, to automatically generate it.
 ```shell
 # Linux/macOS
 python3 ./main.py

@@ -8,7 +8,7 @@ from wilson.bot import Wilson
 def main():
     if not os.path.exists('config.py'):
         try:
-            shutil.copyfile('config.def.txt', 'config.py')
+            shutil.copyfile('res/config.def.txt', 'config.py')
             print('Generated config.py file, please configure bot before re-running')
         except Exception as exc:
             print('An error occurred generating config.py file, consider writing manually')
