@@ -27,6 +27,7 @@ bot_settings.debug_mode = False
 bot_settings.default_presence = default_presence
 bot_settings.embed_footer = 'Happy to help!' # Footer appended on the end of embeds by default
 bot_settings.prefix = bot_prefix
+bot_settings.pstart_command = 'python3 main.py'
 bot_settings.release = release
 
 # Bot intents

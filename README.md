@@ -24,10 +24,10 @@ python3 ./main.py
 # Windows
 py -3 ./main.py
 ```
-You'll need to ammend the following lines in the config with your user id and bot token:
+You'll need to ammend the following lines (near the top of the config) with your user id and bot token:
 ```py
-bot_settings.owner_id = 0 # Discord User ID
-bot_settings.bot_token = '' # Bot token assigned from developer portal
+owner_id = 0 # Discord User ID
+bot_token = '' # Bot token assigned from developer portal
 ```
 Make any other changes you want to the config, for example to the intents:
 ```py

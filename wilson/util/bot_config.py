@@ -18,6 +18,7 @@ class BotSettings:
     default_presence: BotPresence
     embed_footer: str
     prefix: str
+    pstart_command: str
     release: BotRelease
 
 

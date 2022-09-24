@@ -20,7 +20,7 @@ class Admin(commands.Cog):
             await ctx.send('Initiating Hard pstart...')
             if ctx.voice_client is not None:
                 await ctx.voice_client.disconnect(force=True)
-            os.system('./run.sh')
+            os.system(self._bot.config.bot_settings.pstart_command)
             sys.exit()
         elif type.lower() == 'soft':
             await ctx.reply('Initiating Soft pstart...')
