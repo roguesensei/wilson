@@ -1,5 +1,6 @@
 import discord
 import wilson.util.helpers as h
+import wilson.util.logger as log
 
 from discord.ext import commands
 from wilson.bot import Wilson
@@ -149,3 +150,4 @@ welcome_actions: {settings.welcome_actions}
 
 async def setup(bot: Wilson):
     await bot.add_cog(Guild(bot))
+    log.log_info('Guild cog loaded')

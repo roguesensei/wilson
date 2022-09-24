@@ -51,3 +51,4 @@ class Admin(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Admin(bot))
+    log.log_info('Admin cog loaded')

@@ -1,6 +1,7 @@
 import asyncio
 import discord
 import random
+import wilson.util.logger as log
 
 from datetime import datetime
 from discord import app_commands
@@ -197,3 +198,4 @@ class Fun(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Fun(bot))
+    log.log_info('Fun cog loaded')

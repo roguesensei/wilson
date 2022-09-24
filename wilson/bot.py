@@ -41,7 +41,7 @@ class Wilson(commands.Bot):
 
     def run_bot(self) -> None:
         try:
-            log.log_info('Starting bot', self.config.bot_settings.debug_mode)
+            log.log_info('Starting bot')
             self.run(self.config.bot_settings.bot_token)
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
@@ -79,22 +79,14 @@ class Wilson(commands.Bot):
                 if 'extension.yml' in items:
                     config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
                     extension_name = config['name']
-                    # if extension_name in :
                     key = extension_name.lower()
 
                     self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
                                                    'help': f'{extension_path}/help/'}
                     await self.load_extension(config['cog'])
 
-        # if not self._synced:
-        #     await self.tree.sync(guild=discord.Object(id=360059442437423105))
-
-        log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
+        log.log_info(f'Discord API Version: {discord.__version__}')
         log.log_message('Wilson appears...')
-
-    # async def setup_hook(self) -> None:
-        # self.tree.copy_global_to(guild=discord.Object(id=...))
-        # await self.tree.sync(guild=discord.Object(id=...))
 
     async def on_member_join(self, member: discord.Member) -> None:
         guild = member.guild
@@ -115,14 +107,20 @@ class Wilson(commands.Bot):
                 if role is not None:
                     await member.add_roles(role)
 
-    async def on_command(self, ctx: commands.Context):
+    async def on_command(self, ctx: commands.Context) -> None:
         log.log_debug(f'{ctx.message.clean_content}')
+
+    async def on_error(self, event_method: str, /, *args, **kwargs):
+        print('ERROR')
+        print(event_method)
+        print(args)
+        print(kwargs)
 
     async def on_command_error(self, ctx: commands.Context, exc: errors.CommandError) -> None:
         if isinstance(exc, errors.CommandNotFound):
-            if '|' in self.config.bot_settings.prefix and not ctx.message.content.startswith(
-                    self.config.bot_settings.prefix + '|'):
-                # If bot contains "|" in the prefix, distinguish between spoiler messages and command
+            if self.config.bot_settings.prefix == '|' and(
+                '|' in self.config.bot_settings.prefix and not ctx.message.content.startswith(self.config.bot_settings.prefix + '|')):
+                # If bot contains "|" in the prefix (when "|" is the prefix like in Wilson's case), distinguish between spoiler messages and command
                 log.log_error('CommandNotFound', exc)
         elif isinstance(exc, errors.MissingRequiredArgument) or isinstance(exc, errors.BadArgument) or isinstance(
                 exc, errors.UserInputError):

@@ -163,3 +163,4 @@ class Moderator(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Moderator(bot))
+    log.log_info('Moderator cog loaded')
