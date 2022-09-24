@@ -5,7 +5,7 @@ from wilson.util.bot_config import *
 
 
 owner_id = 0 # Discord User ID
-bot_token = ''
+bot_token = '' # Discord Bot Token
 bot_prefix = '!'
 
 # Default bot presence
