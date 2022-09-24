@@ -6,6 +6,8 @@ from wilson.bot import Wilson
 
 
 def main():
+    """Main runtime function
+    """
     if not os.path.exists('config.py'):
         try:
             shutil.copyfile('res/config.def.txt', 'config.py')

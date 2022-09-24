@@ -21,7 +21,16 @@ cogs = [
 
 
 class Wilson(commands.Bot):
+    """Class representation of Wilson. 
+    Essentially an extension of the discord.py :class:`discord.ext.commands.Bot` class.
+
+    :param config: Bot configuration
+    :type config: class:`BotConfig`
+    """
+
     def __init__(self, config: BotConfig):
+        """Constructor function
+        """
         self._config = config
         self._online_time = 0
         self._synced = False
@@ -40,14 +49,36 @@ class Wilson(commands.Bot):
         # self.tree = app_commands.CommandTree(self)
 
     def run_bot(self) -> None:
+        """Runs bot
+        """
         try:
             log.log_info('Starting bot')
             self.run(self.config.bot_settings.bot_token)
         except Exception as exc:
             log.log_error('An error occurred while running the bot', exc)
 
-    def generate_embed(self, title, author: discord.Member, description: str = None, image_url: str = None,
+    def generate_embed(self, title: str, author: discord.Member, description: str = None, image_url: str = None,
                        thumbnail_url: str = None) -> discord.Embed:
+        """Utitlity function for generating :class:`discord.Embed` class
+
+        :param title: Embed title
+        :type title: str
+
+        :param author: Message author, the requester of the command
+        :type author: `discord.Member` Class
+
+        :param description: Embed body
+        :type description: str, optional
+
+        :param image_url: Embed Image URL
+        :type image_url: str, optional
+
+        :param thumbnail_url: Embed Thumbnail URL
+        :type thumbnail_url: str, optional
+
+        :return: Discord Embed Object
+        :rtype: `discord.Embed` Class
+        """
         embed = discord.Embed(title=title, description=description, colour=0x1f0000)
         embed.set_author(name=f'Requested by {author.display_name}', icon_url=author.display_avatar.url)
         embed.set_footer(text=self.config.bot_settings.embed_footer, icon_url=self.user.avatar.url)

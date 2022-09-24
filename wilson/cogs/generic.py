@@ -10,11 +10,26 @@ from wilson.util.helpers import format_elapsed_time
 
 
 class Generic(commands.Cog):
+    """Cog for Generic Bot Commands
+
+    :param bot: Bot instance
+    :type bot: class:`Wilson`
+    """
     def __init__(self, bot: Wilson):
+        """ctor
+        """
         self._bot = bot
 
-    @commands.command()
+    @commands.command() 
     async def hello(self, ctx: commands.Context, message: str = None) -> None:
+        """Wilson's first command. I wonder what it does...
+
+        :param ctx: Command Context
+        :type ctx: `discord.commands.Context`
+
+        :param message: I will not explain further
+        :type message: str,optional
+        """
         if message is not None and message.lower() == 'there':  # General Kenobi
             if randint(1, 4) == 4:
                 await ctx.message.reply('https://media1.tenor.com/images/b365e7d26fe05de381a4fdfd9d8f9517/tenor.gif')
