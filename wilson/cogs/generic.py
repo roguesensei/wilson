@@ -104,7 +104,15 @@ class Generic(commands.Cog):
                     extensions_body += '\n```'
 
                 bot_avatar = self._bot.user.avatar.url
-                body = f.read().format(extensions_body)
+
+                slash_commands = []
+                app_commands = self._bot.tree.get_commands()
+            
+                for command in app_commands:
+                    slash_commands.append(f'`/{command.name}`')
+
+                body = f.read().format(extensions_body, ' '.join(slash_commands))
+
 
                 embed = self._bot.generate_embed(title=f'{help_command.title()}!', author=ctx.author, description=body,
                                                  thumbnail_url=bot_avatar)

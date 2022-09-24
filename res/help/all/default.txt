@@ -18,3 +18,6 @@ Type `|help <category> <command_name>` for more information on an individual com
 Example: |help fun dice
 # Not case sensitive
 ```
+**Slash Commands**
+Type `/` to use the following commands:
+{}
