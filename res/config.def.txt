@@ -5,7 +5,7 @@ from wilson.util.bot_config import *
 
 
 owner_id = 0 # Discord User ID
-bot_token = '' # Discord Bot Token (hidden token generated on developer app portal)
+bot_token = '' # Bot token assigned from developer portal
 bot_prefix = '!'
 
 # Default bot presence
