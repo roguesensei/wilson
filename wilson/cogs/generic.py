@@ -1,6 +1,8 @@
+import discord
 import time
 import wilson.util.logger as log
 
+from discord import app_commands
 from discord.ext import commands
 from random import randint
 from wilson.bot import Wilson
@@ -22,6 +24,10 @@ class Generic(commands.Cog):
                 await ctx.message.reply('https://i.giphy.com/media/xTiIzJSKB4l7xTouE8/giphy.webp')
         else:
             await ctx.message.reply('Greetings mortal...')
+
+    @app_commands.command(name='hello', description='My slash commands debut, I wonder what it does...')
+    async def slash_hello(self,ctx: discord.Interaction):
+        await ctx.response.send_message('Greetings mortal...')
 
     @commands.command()
     async def ping(self, ctx: commands.Context) -> None:

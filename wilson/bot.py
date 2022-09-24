@@ -4,7 +4,8 @@ import time
 import wilson.util.logger as log
 import yaml
 
-from discord import Intents
+# from discord import Intents
+from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import errors
 from wilson.util.bot_config import BotConfig
@@ -23,6 +24,7 @@ class Wilson(commands.Bot):
     def __init__(self, config: BotConfig):
         self._config = config
         self._online_time = 0
+        self._synced = False
         self.wilson_extensions = {}
         super().__init__(
             command_prefix=self._config.bot_settings.prefix, case_insensitive=True,
@@ -35,7 +37,7 @@ class Wilson(commands.Bot):
             log.log_warning('Created new hidden .wilson directory')
             os.mkdir('.wilson')
 
-        #self.tree = app_commands.CommandTree(self)
+        # self.tree = app_commands.CommandTree(self)
 
     def run_bot(self) -> None:
         try:
@@ -58,6 +60,8 @@ class Wilson(commands.Bot):
         return embed
 
     async def on_ready(self) -> None:
+        await self.wait_until_ready()
+
         for cog in cogs:
             await self.load_extension(cog)
 
@@ -81,6 +85,9 @@ class Wilson(commands.Bot):
                     self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
                                                    'help': f'{extension_path}/help/'}
                     await self.load_extension(config['cog'])
+
+        # if not self._synced:
+        #     await self.tree.sync(guild=discord.Object(id=360059442437423105))
 
         log.log_info(f'Discord API Version: {discord.__version__}', self.config.bot_settings.debug_mode)
         log.log_message('Wilson appears...')

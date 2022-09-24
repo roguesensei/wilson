@@ -3,6 +3,7 @@ import sys
 
 import discord
 import os
+import wilson.util.logger as log
 
 from discord.ext import commands
 from wilson.bot import Wilson
@@ -14,7 +15,7 @@ class Admin(commands.Cog):
 
     @commands.command(aliases=['restart'])
     @commands.is_owner()
-    async def pstart(self, ctx: commands.Context, type: str = 'hard'):
+    async def pstart(self, ctx: commands.Context, type: str = 'hard') -> None:
         if type.lower() == 'hard':
             await ctx.send('Initiating Hard pstart...')
             if ctx.voice_client is not None:
@@ -31,11 +32,21 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def upgrade(self, ctx):
+    async def upgrade(self, ctx: commands.Context) -> None:
         await ctx.send('Fetching from the repository...')
         output = os.popen('git fetch && git pull').read()
 
         await ctx.reply(f'```\n{output}\n```')
+
+    @commands.command()
+    async def sync(self, ctx: commands.Context, guild = 0) -> None:
+        fmt = []
+        if guild != 0:
+            fmt = await ctx.bot.tree.sync(guild=discord.Object(id=guild))
+        else:
+            fmt = await ctx.bot.tree.sync()
+        await ctx.reply(f'Synced {len(fmt)} slash commands')
+
 
 
 async def setup(bot: Wilson):
