@@ -16,7 +16,8 @@ cogs = [
     'wilson.cogs.generic',
     'wilson.cogs.fun',
     'wilson.cogs.guild',
-    'wilson.cogs.moderator'
+    'wilson.cogs.moderator',
+    'wilson.cogs.app_commands.role'
 ]
 
 
@@ -94,7 +95,11 @@ class Wilson(commands.Bot):
         await self.wait_until_ready()
 
         for cog in cogs:
-            await self.load_extension(cog)
+            try:
+                await self.load_extension(cog)
+                log.log_info(f'Loaded cog {cog}')
+            except Exception as exc:
+                log.log_error(f'An error occurred loading cog {cog}', exc)
 
         default_presence = self.config.bot_settings.default_presence
         default_activity = discord.Activity(name=default_presence.activity_name, type=default_presence.activity_type)

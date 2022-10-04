@@ -141,4 +141,3 @@ class Generic(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Generic(bot))
-    log.log_info('Generic cog loaded')

@@ -64,7 +64,12 @@ class Moderator(commands.Cog):
     @commands.guild_only()
     @commands.has_permissions(manage_roles=True)
     async def addrole(self, ctx: commands.Context, user: discord.Member, role: discord.Role):
-        if h.compare_roles(ctx.message.author, user):
+        if role.id == ctx.author.top_role.id:
+            await interaction.response.send_message('Cannot add a role the same as your own')
+        elif h.compare_roles(ctx.message.author, user):
+            if h.contains_role(user, role):
+                await ctx.reply(f'**{user.display_name}** already has the role')
+                return
             await user.add_roles(role)
             await ctx.reply(f'**{user.display_name}** has been granted role **{role.name}**')
         else:
@@ -74,7 +79,12 @@ class Moderator(commands.Cog):
     @commands.guild_only()
     @commands.has_permissions(manage_roles=True)
     async def takerole(self, ctx: commands.Context, user: discord.Member, role: discord.Role):
-        if h.compare_roles(ctx.message.author, user):
+        if role.id == ctx.author.top_role.id:
+            await interaction.response.send_message('Cannot take a role the same as your own')
+        elif h.compare_roles(ctx.message.author, user):
+            if not h.contains_role(user, role):
+                await ctx.reply(f'**{user.display_name}** already doesn\'t have the role')
+                return
             await user.remove_roles(role)
             await ctx.reply(f'**{role.name}** role removed from **{user.display_name}**')
         else:
@@ -163,4 +173,3 @@ class Moderator(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Moderator(bot))
-    log.log_info('Moderator cog loaded')

@@ -150,4 +150,3 @@ welcome_actions: {settings.welcome_actions}
 
 async def setup(bot: Wilson):
     await bot.add_cog(Guild(bot))
-    log.log_info('Guild cog loaded')

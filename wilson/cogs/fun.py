@@ -204,4 +204,3 @@ class Fun(commands.Cog):
 
 async def setup(bot: Wilson):
     await bot.add_cog(Fun(bot))
-    log.log_info('Fun cog loaded')
