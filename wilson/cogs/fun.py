@@ -41,12 +41,14 @@ class Fun(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
     @commands.command(name='guildav', aliases=['serverav'])
+    @commands.guild_only()
     async def guild_avatar(self, ctx: commands.Context) -> None:
         embed = self._generate_guild_avatar_embed(ctx.guild, ctx.author)
 
         await ctx.send(embed=embed)
     
     @app_commands.command(name='guild_avatar', description='Display the guild avatar')
+    @app_commands.guild_only()
     async def slash_guild_avatar(self, interaction: discord.Interaction) -> None:
         embed = self._generate_guild_avatar_embed(interaction.guild, interaction.user)
 
@@ -86,24 +88,28 @@ class Fun(commands.Cog):
             await ctx.send('Invalid dice roll')
 
     @commands.command()
+    @commands.guild_only()
     async def whois(self, ctx: commands.Context, member: discord.Member):
         embed = await self._generate_whois_embed(member, ctx.author)
         
         await ctx.send(embed=embed)
 
     @app_commands.command(name='whois', description='Display member info')
+    @app_commands.guild_only()
     async def slash_whois(self, interaction: discord.Interaction, member: discord.Member) -> None:
         embed = await self._generate_whois_embed(member, interaction.user)
 
         await interaction.response.send_message(embed=embed)
 
     @commands.command(aliases=['serverinfo'])
+    @commands.guild_only()
     async def guildinfo(self, ctx: commands.Context) -> None:
         embed = self._generate_guild_info_embed(ctx.guild, ctx.author)
 
         await ctx.send(embed=embed)
     
     @app_commands.command(name='guild_info', description='Display guild info')
+    @app_commands.guild_only()
     async def slash_guildinfo(self, interaction: discord.Interaction) -> None:
         embed = self._generate_guild_info_embed(interaction.guild, interaction.user)
 

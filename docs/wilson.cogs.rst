@@ -12,7 +12,7 @@ Admin Cog
 Fun Cog
 ----------------------
 
-.. automodule:: wilson.cogs.fun
+.. autoclass:: wilson.cogs.fun.Fun
    :members:
 
 Generic Cog
