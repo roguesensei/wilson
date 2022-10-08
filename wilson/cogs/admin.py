@@ -2,6 +2,7 @@ import asyncio
 import discord
 import git
 import os
+import shutil
 import sys
 import yaml
 
@@ -23,6 +24,7 @@ class Admin(commands.Cog):
             if ctx.voice_client is not None:
                 await ctx.voice_client.disconnect(force=True)
             os.system(self._bot.config.bot_settings.pstart_command)
+            await ctx.bot.close()
             sys.exit()
         elif type.lower() == 'soft':
             await ctx.reply('Initiating Soft pstart...')
@@ -32,6 +34,13 @@ class Admin(commands.Cog):
                 activity=discord.Activity(
                     name=presence.activity_name, type=presence.activity_type),
                 status=presence.status)
+
+    @commands.command(aliases=['shutdown'])
+    @commands.is_owner()
+    async def sleep(self, ctx: commands.Context) -> None:
+        await ctx.send('Going back to sleep...')
+        await ctx.bot.close()
+        sys.exit()
 
     @commands.command()
     @commands.is_owner()
@@ -94,6 +103,13 @@ class Admin(commands.Cog):
             embed = self._bot.generate_embed(
                 'Package Query', ctx.author, description=pkgs)
             await ctx.reply(embed=embed)
+        elif action.startswith('r'):  # Remove
+            repo_dir = f'extensions/{pkg}/'
+            if os.path.exists(repo_dir):
+                shutil.rmtree(repo_dir)
+                await ctx.reply('Package uninstalled')
+            else:
+                await ctx.reply('Package not installed')
         else:
             await ctx.reply('Unrecognised action')
 
