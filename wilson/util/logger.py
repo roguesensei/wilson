@@ -1,7 +1,7 @@
 import time
 import traceback
 
-from config import bot_config
+# from config import bot_config
 from enum import Enum
 
 
@@ -15,6 +15,12 @@ class LogLevel(Enum):
 
 
 separator = '\033[95m>>\033[0m'
+debug_mode = False
+
+
+def set_debug_mode(value: bool) -> None:
+    debug_mode = value
+
 
 def log(message: str, level: LogLevel = LogLevel.MESSAGE):
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
@@ -31,7 +37,8 @@ def log(message: str, level: LogLevel = LogLevel.MESSAGE):
     elif level == LogLevel.CRITICAL:
         level_text = '\033[41m\033[93m[CRITICAL]'
 
-    print(f'\033[36m{timestamp}\033[0m {separator} \033[01m{level_text}\033[0m {separator}\t{message}')
+    print(
+        f'\033[36m{timestamp}\033[0m {separator} \033[01m{level_text}\033[0m {separator}\t{message}')
 
 
 def log_exception(exc: BaseException):
@@ -50,12 +57,12 @@ def log_message(message: str):
 
 
 def log_info(message: str):
-    if bot_config.bot_settings.debug_mode:
+    if debug_mode:
         log(message, LogLevel.INFO)
 
 
 def log_debug(message: str):
-    if bot_config.bot_settings.debug_mode:
+    if debug_mode:
         log(message, LogLevel.DEBUG)
 
 

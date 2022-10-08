@@ -1,7 +1,6 @@
 import datetime
-import os.path
-
 import discord
+import os.path
 
 
 def add_escape_characters(string: str):

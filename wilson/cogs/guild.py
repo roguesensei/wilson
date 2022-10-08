@@ -1,10 +1,8 @@
 import discord
-import wilson.util.helpers as h
-import wilson.util.logger as log
 
 from discord.ext import commands
-from wilson.bot import Wilson
-from wilson.util.guild_settings import GuildSettings
+from ..bot import Wilson
+from ..util.guild_settings import GuildSettings
 
 
 class Guild(commands.Cog):

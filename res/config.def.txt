@@ -1,7 +1,7 @@
 """File generated automatically"""
 import discord
 
-from wilson.util.bot_config import *
+from .wilson.util.bot_config import *
 
 
 owner_id = 0 # Discord User ID

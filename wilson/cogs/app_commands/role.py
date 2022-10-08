@@ -1,9 +1,9 @@
 import discord
-import wilson.util.helpers as h
 
 from discord import app_commands
 from discord.ext import commands
-from wilson.bot import Wilson
+from ...util.helpers import *
+from ...bot import Wilson
 
 
 class SlashRole(commands.GroupCog, name='role'):
@@ -17,8 +17,8 @@ class SlashRole(commands.GroupCog, name='role'):
     async def add_role(self, interaction: discord.Interaction, member: discord.Member, role: discord.Role):
         if role.id == interaction.user.top_role.id:
             await interaction.response.send_message('Cannot add a role the same as your own')
-        elif h.compare_roles(interaction.user, member):
-            if h.contains_role(member, role):
+        elif compare_roles(interaction.user, member):
+            if contains_role(member, role):
                 await interaction.response.send_message(f'**{member.display_name}** already has the role')
                 return
             await member.add_roles(role)
@@ -33,8 +33,8 @@ class SlashRole(commands.GroupCog, name='role'):
     async def take_role(self, interaction: discord.Interaction, member: discord.Member, role: discord.Role):
         if role.id == interaction.user.top_role.id:
             await interaction.response.send_message('Cannot take a role the same as your own')
-        elif h.compare_roles(interaction.user, member):
-            if not h.contains_role(member, role):
+        elif compare_roles(interaction.user, member):
+            if not contains_role(member, role):
                 await interaction.response.send_message(f'**{member.display_name}** already lacks the role')
                 return
             await member.remove_roles(role)

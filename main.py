@@ -1,28 +1,28 @@
 import os
 import shutil
 import sys
-import wilson.util.logger as log
+
 from wilson.bot import Wilson
+from wilson.util.logger import *
 
 
 def main():
-    """Main runtime function
-    """
-    if not os.path.exists('config.py'):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+    if not os.path.exists(f'{dir_path}/config.py'):
         try:
-            shutil.copyfile('res/config.def.txt', 'config.py')
+            shutil.copyfile(f'{dir_path}/res/config.def.txt', f'{dir_path}config.py')
             print('Generated config.py file, please configure bot before re-running')
         except Exception as exc:
-            print('An error occurred generating config.py file, consider writing manually')
-            log.log_critical('An error occurred generating config.py file, consider writing manually', exc)
+            log_critical('An error occurred generating config.py file, consider writing manually', exc)
             exit(1)
     else:
-        from config import bot_config
-        bot = Wilson(bot_config)
         try:
+            from config import bot_config
+            bot = Wilson(bot_config)
             bot.run_bot()
         except Exception as exc:
-            log.log_critical('Could not start the bot', exc)
+            log_critical('Could not start the bot', exc)
             exit(1)
 
 

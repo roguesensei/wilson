@@ -1,13 +1,12 @@
 import asyncio
 import discord
 import random
-import wilson.util.logger as log
 
 from datetime import datetime
 from discord import app_commands
 from discord.ext import commands
-from wilson.bot import Wilson
-from wilson.util.helpers import format_elapsed_time
+from ..bot import Wilson
+from ..util.helpers import format_elapsed_time
 
 
 class Fun(commands.Cog):

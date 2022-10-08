@@ -1,0 +1,7 @@
+:white_small_square: `package <action> <package?>`: Manage extension packages
+
+Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
+```yml
+Example: |help fun dice
+# Not case sensitive
+```

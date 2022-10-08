@@ -1,35 +1,20 @@
 import discord
 import time
-import wilson.util.logger as log
 
 from discord import app_commands
 from discord.ext import commands
 from random import randint
-from wilson.bot import Wilson
-from wilson.util.helpers import format_elapsed_time
+from ..bot import Wilson
+from ..util.helpers import format_elapsed_time
+from ..util.logger import *
 
 
 class Generic(commands.Cog):
-    """Cog for Generic Bot Commands
-
-    :param bot: Bot instance
-    :type bot: class:`Wilson`
-    """
     def __init__(self, bot: Wilson):
-        """ctor
-        """
         self._bot = bot
 
-    @commands.command() 
+    @commands.command()
     async def hello(self, ctx: commands.Context, message: str = None) -> None:
-        """Wilson's first command. I wonder what it does...
-
-        :param ctx: Command Context
-        :type ctx: `discord.commands.Context`
-
-        :param message: I will not explain further
-        :type message: str,optional
-        """
         if message is not None and message.lower() == 'there':  # General Kenobi
             if randint(1, 4) == 4:
                 await ctx.message.reply('https://media1.tenor.com/images/b365e7d26fe05de381a4fdfd9d8f9517/tenor.gif')
@@ -41,7 +26,7 @@ class Generic(commands.Cog):
             await ctx.message.reply('Greetings mortal...')
 
     @app_commands.command(name='hello', description='My slash commands debut, I wonder what it does...')
-    async def slash_hello(self,ctx: discord.Interaction):
+    async def slash_hello(self, ctx: discord.Interaction):
         await ctx.response.send_message('Greetings mortal...')
 
     @commands.command()
@@ -58,7 +43,8 @@ class Generic(commands.Cog):
     @commands.command()
     async def embed(self, ctx: commands.Context, *, message: str) -> None:
         embed_message = message
-        embed = self._bot.generate_embed(f'Notice from {ctx.author}', author=ctx.author)
+        embed = self._bot.generate_embed(
+            f'Notice from {ctx.author}', author=ctx.author)
 
         if '--#' in embed_message:
             str_hex = embed_message.split('--#')[1][:6].strip()
@@ -70,7 +56,7 @@ class Generic(commands.Cog):
                 embed_message = embed_message.replace(f'--#{str_hex}', '')
                 embed.colour = converted_hex
             except Exception as exc:
-                log.log_error(f'Could not parse colour hex "{str_hex}"', exc)
+                log_error(f'Could not parse colour hex "{str_hex}"', exc)
                 await ctx.send('Could not parse the colour hex')
                 return
         embed.description = embed_message
@@ -81,7 +67,8 @@ class Generic(commands.Cog):
     @commands.command(aliases=['img'])
     async def image(self, ctx: commands.Context, message: str) -> None:
         await ctx.message.delete()
-        embed = self._bot.generate_embed(None, author=ctx.author, image_url=message)
+        embed = self._bot.generate_embed(
+            None, author=ctx.author, image_url=message)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['info'])
@@ -92,17 +79,23 @@ class Generic(commands.Cog):
         embed = self._bot.generate_embed(f'{self._bot.user.name} Release Info', ctx.author,
                                          thumbnail_url=self._bot.user.avatar.url)
         embed.add_field(name='Bot Owner', value=app_info.owner, inline=True)
-        embed.add_field(name='Current Update', value=self._bot.config.bot_settings.release.update_name, inline=True)
-        embed.add_field(name='Current Version', value=self._bot.config.bot_settings.release.version.__str__(), inline=True)
-        embed.add_field(name='Uptime', value=format_elapsed_time(current_time - self._bot.online_time), inline=True)
-        embed.add_field(name='Total Guilds', value=len(self._bot.guilds).__str__(), inline=True)
-        embed.add_field(name='Total Users', value=len(self._bot.users).__str__(), inline=True)
+        embed.add_field(name='Current Update',
+                        value=self._bot.config.bot_settings.release.update_name, inline=True)
+        embed.add_field(name='Current Version',
+                        value=self._bot.config.bot_settings.release.version.__str__(), inline=True)
+        embed.add_field(name='Uptime', value=format_elapsed_time(
+            current_time - self._bot.online_time), inline=True)
+        embed.add_field(name='Total Guilds', value=len(
+            self._bot.guilds).__str__(), inline=True)
+        embed.add_field(name='Total Users', value=len(
+            self._bot.users).__str__(), inline=True)
         await ctx.message.reply(embed=embed)
 
     @commands.command()
     async def help(self, ctx: commands.Context, help_category: str = 'all', help_command: str = 'default') -> None:
         try:
-            base_dir = self._bot.wilson_extensions[help_category]['help'] if help_category in self._bot.wilson_extensions else './res/help'
+            base_dir = self._bot.wilson_extensions[help_category][
+                'help'] if help_category in self._bot.wilson_extensions else './res/help'
 
             with open(f'{base_dir}/{help_category.lower()}/{help_command.lower()}.txt') as f:
                 if help_category == 'all':
@@ -122,19 +115,18 @@ class Generic(commands.Cog):
 
                 slash_commands = []
                 app_commands = self._bot.tree.get_commands()
-            
+
                 for command in app_commands:
                     slash_commands.append(f'`/{command.name}`')
 
                 body = f.read().format(extensions_body, ' '.join(slash_commands))
-
 
                 embed = self._bot.generate_embed(title=f'{help_command.title()}!', author=ctx.author, description=body,
                                                  thumbnail_url=bot_avatar)
 
                 await ctx.message.reply(embed=embed)
         except Exception as exc:
-            log.log_error('Error invoking help command', exc)
+            log_error('Error invoking help command', exc)
             await ctx.message.reply(
                 'An error has occurred. The help file either doesn\'t nor will exist or hasn\'t been implemented yet.')
 
