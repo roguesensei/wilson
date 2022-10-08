@@ -77,19 +77,20 @@ class Wilson(commands.Bot):
         await self.change_presence(activity=default_activity, status=default_presence.status)
         self._online_time = time.time()
 
-        if os.path.exists('extensions'):
-            for extension_dir in os.listdir('extensions'):
-                extension_path = f'extensions/{extension_dir}'
-                items = os.listdir(extension_path)
+        if not os.path.exists('extensions'):
+            os.mkdir('extensions')
+        for extension_dir in os.listdir('extensions'):
+            extension_path = f'extensions/{extension_dir}'
+            items = os.listdir(extension_path)
 
-                if 'extension.yml' in items:
-                    config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
-                    extension_name = config['friendly_name']
-                    key = extension_name.lower()
+            if 'extension.yml' in items:
+                config = yaml.safe_load(open(f'{extension_path}/extension.yml'))
+                extension_name = config['friendly_name']
+                key = extension_name.lower()
 
-                    self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
-                                                   'help': f'{extension_path}/help/'}
-                    await self.load_extension(config['cog'])
+                self.wilson_extensions[key] = {'name': f'{extension_name} (by {config["author"]})',
+                                                'help': f'{extension_path}/help/'}
+                await self.load_extension(config['cog'])
 
         log_info(f'Discord API Version: {discord.__version__}')
         log_message('Wilson appears...')
