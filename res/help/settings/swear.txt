@@ -1,5 +1,5 @@
 **Permissions Required: Manage Server**
-Written as: `|swear <action> <swear_word> <swear_edit?>`
+Written as: `<prefix>swear <action> <swear_word> <swear_edit?>`
 `<action>` is specified action which can include:
 
 :white_small_square: `add` *Create a swear with `<swear_word>` as the swear word*

@@ -1,12 +1,12 @@
-Written as: `|embed <message>`
+Written as: `<prefix>embed <message>`
 `<message>` is a message the user wishes to be embedded
 Optionally can include a hexidecimal number representing a colour by including `--#<colour_hex>`
 
 Valid Examples:
-:white_small_square: `|embed This is a message`
-:white_small_square: `|embed --#ff0000 This is a colour`
-:white_small_square: `|embed colour goes --#ae5a2f here`
+:white_small_square: `<prefix>embed This is a message`
+:white_small_square: `<prefix>embed --#ff0000 This is a colour`
+:white_small_square: `<prefix>embed colour goes --#ae5a2f here`
 
 Invalid Examples:
-:white_small_square: `|embed`
-:white_small_square: `|embed invalid colour --#00ffaaf`
+:white_small_square: `<prefix>embed`
+:white_small_square: `<prefix>embed invalid colour --#00ffaaf`

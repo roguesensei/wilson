@@ -1,9 +1,9 @@
-Written as: `|image <image_url>`
+Written as: `<prefix>image <image_url>`
 `<image_url>` is an image URL
 
 Valid Examples:
-:white_small_square: `|image URL.gif`
+:white_small_square: `<prefix>image URL.gif`
 
 Invalid Examples:
-:white_small_square: `|image`
-:white_small_square: `|image message`
+:white_small_square: `<prefix>image`
+:white_small_square: `<prefix>image message`

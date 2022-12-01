@@ -1,25 +1,25 @@
 **Permissions Required: Manage Server**
 
-You can opt in to use server-specific settings, which will require some data collection, by typing `|optin` (Requires "manage server" permission)
-Type `|help settings data` for more information on data collection.
+You can opt in to use server-specific settings, which will require some data collection, by typing `<prefix>optin` (Requires "manage server" permission)
+Type `<prefix>help settings data` for more information on data collection.
 
 **Toggles**
-Toggle togglable settings with `|toggle <command_name>` from the **Toggles** list
+Toggle togglable settings with `<prefix>toggle <command_name>` from the **Toggles** list
 
 **Welcome Message**
-Set Welcome/Level up Message with `|welcome_message <message>` where `<message>` is a message with the option to include mark-up parameters:
+Set Welcome/Level up Message with `<prefix>welcome_message <message>` where `<message>` is a message with the option to include mark-up parameters:
 :white_small_square: `[!server]` for server name
 :white_small_square: `[!user]` for user name
 :white_small_square: `[@user]` for user name with ping
 
 **Log/Welcome Channels**
-Set Log/Welcome channels with `|welcome_channel <#channel>` and `|log_channel <#channel>` where `<#channel>` is a text channel
+Set Log/Welcome channels with `<prefix>welcome_channel <#channel>` and `<prefix>log_channel <#channel>` where `<#channel>` is a text channel
 
 **Default/Auto Role**
-To set a default/auto role, use the `|autorole <@role>` command where `<@role>` is a user role
+To set a default/auto role, use the `<prefix>autorole <@role>` command where `<@role>` is a user role
 
-Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
+Type `<prefix>help <category> <command_name>` for more information on an individual command. Exclude parameters.
 ```yml
-Example: |help fun dice
+Example: <prefix>help fun dice
 # Not case sensitive
 ```

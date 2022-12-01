@@ -1,9 +1,9 @@
-Written as: `|unshun <@user>`
-Command aliases: `|unmute |untimeout`
+Written as: `<prefix>unshun <@user>`
+Command aliases: `<prefix>unmute <prefix>untimeout`
 
 Valid Examples:
-:white_small_square: `|unshun @user`
+:white_small_square: `<prefix>unshun @user`
 
 Invalid Examples:
-:white_small_square: `|unshun`
-:white_small_square: `|unshun @UserNotInServer`
+:white_small_square: `<prefix>unshun`
+:white_small_square: `<prefix>unshun @UserNotInServer`

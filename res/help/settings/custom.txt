@@ -1,5 +1,5 @@
 **Permissions Required: Manage Server**
-Written as: `|custom <action> <command_name> <response>`
+Written as: `<prefix>custom <action> <command_name> <response>`
 `<action>` is specified action which can include:
 
 :white_small_square: `text` *Create a text-response custom command with `<command_name>` as the command name and `<response>` as the text*

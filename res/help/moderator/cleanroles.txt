@@ -1,5 +1,5 @@
-Written as: `|cleanroles`
+Written as: `<prefix>cleanroles`
 
 Valid Examples:
-:white_small_square: `|cleanroles`
-:white_small_square: `|cleanroles Wilson`
+:white_small_square: `<prefix>cleanroles`
+:white_small_square: `<prefix>cleanroles Wilson`

@@ -1,10 +1,10 @@
 **Permissons Required: Manage Emojis**
-Written as: `|clone <:custom_emoji:>`
-Command aliases: `|steal |yoink`
+Written as: `<prefix>clone <:custom_emoji:>`
+Command aliases: `<prefix>steal <prefix>yoink`
 
 Valid Examples:
-:white_small_square: `|clone :custom_emoji:`
+:white_small_square: `<prefix>clone :custom_emoji:`
 
 Invalid Examples:
-:white_small_square: `|clone`
-:white_small_square: `|clone :emoji_already_in_server:`
+:white_small_square: `<prefix>clone`
+:white_small_square: `<prefix>clone :emoji_already_in_server:`

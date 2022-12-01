@@ -1,11 +1,11 @@
 **Permissons Required: Ban Users**
-Written as: `|ban <@user> <reason?>`
+Written as: `<prefix>ban <@user> <reason?>`
 Ban user `<@user>` with optional reason `<reason?>`
 
 Valid Examples:
-:white_small_square: `|ban @user reason`
-:white_small_square: `|ban Wilson`
+:white_small_square: `<prefix>ban @user reason`
+:white_small_square: `<prefix>ban Wilson`
 
 Invalid Examples:
-:white_small_square: `|ban`
-:white_small_square: `|ban @UserNotInServer`
+:white_small_square: `<prefix>ban`
+:white_small_square: `<prefix>ban @UserNotInServer`

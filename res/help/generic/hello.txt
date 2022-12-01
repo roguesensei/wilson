@@ -1,5 +1,5 @@
-Written as: `|hello`
+Written as: `<prefix>hello`
 
 Valid Examples:
-:white_small_square: `|hello`
-:white_small_square: `|hello Wilson`
+:white_small_square: `<prefix>hello`
+:white_small_square: `<prefix>hello Wilson`

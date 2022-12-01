@@ -1,5 +1,5 @@
-Written as: `|f`
+Written as: `<prefix>f`
 
 Valid Examples:
-:white_small_square: `|f`
-:white_small_square: `|f Wilson`
+:white_small_square: `<prefix>f`
+:white_small_square: `<prefix>f Wilson`

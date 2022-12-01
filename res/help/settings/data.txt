@@ -1,4 +1,4 @@
-For server-specific bot settings, some data collection is required in order to make these settings function. Data is not collected by default and users with the "Manage Server" permission can allow this by typing `|optin`. On the flipside, you can opt out any time by typing `|optout`
+For server-specific bot settings, some data collection is required in order to make these settings function. Data is not collected by default and users with the "Manage Server" permission can allow this by typing `<prefix>optin`. On the flipside, you can opt out any time by typing `<prefix>optout`
 
 **What gets collected?**
 Only the bare minimum gets stored, and that is the server ID, and the IDs of the role/channels bound to autorole, welcome channel or log channel. If said roles/channels are deleted, they are not audited or logged in an attempt to update these values.

@@ -1,4 +1,4 @@
-My prefix is `|`
+My prefix is `<prefix>`
 
 **Command Categories**
 ```yml
@@ -8,14 +8,14 @@ My prefix is `|`
 - Settings
 ```{}
 **Help usage**
-Type `|help <category>` to view the commands in each category.
+Type `<prefix>help <category>` to view the commands in each category.
 ```yml
-Example: |help generic
+Example: <prefix>help generic
 # Not case sensitive
 ```
-Type `|help <category> <command_name>` for more information on an individual command.
+Type `<prefix>help <category> <command_name>` for more information on an individual command.
 ```yml
-Example: |help fun dice
+Example: <prefix>help fun dice
 # Not case sensitive
 ```
 **Slash Commands**

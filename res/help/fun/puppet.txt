@@ -1,9 +1,9 @@
-Written as: `|puppet <message>`
+Written as: `<prefix>puppet <message>`
 `<message>` is a message for me to echo
 
 Valid Examples:
-:white_small_square: `|puppet Message`
-:white_small_square: `|puppet @user`
+:white_small_square: `<prefix>puppet Message`
+:white_small_square: `<prefix>puppet @user`
 
 Invalid Examples:
-:white_small_square: `|puppet`
+:white_small_square: `<prefix>puppet`

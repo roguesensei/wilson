@@ -1,10 +1,10 @@
 **Permissions Required: Manage Messages**
-Written as: `|sweep  <number? 2-100: default 20>`
-Alias: `|prune`
+Written as: `<prefix>sweep  <number? 2-100: default 20>`
+Alias: `<prefix>prune`
 
 Valid Examples:
-:white_small_square: `|sweep`
-:white_small_square: `|sweep 1-100`
+:white_small_square: `<prefix>sweep`
+:white_small_square: `<prefix>sweep 1-100`
 
 Invalid Examples:
-:white_small_square: `|sweep one hundred`
+:white_small_square: `<prefix>sweep one hundred`

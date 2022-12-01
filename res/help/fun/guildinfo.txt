@@ -1,6 +1,6 @@
-Written as: `|guildinfo`
-Command aliases: `|serverinfo`
+Written as: `<prefix>guildinfo`
+Command aliases: `<prefix>serverinfo`
 
 Valid Examples:
-:white_small_square: `|guildinfo`
-:white_small_square: `|serverinfo Wilson World`
+:white_small_square: `<prefix>guildinfo`
+:white_small_square: `<prefix>serverinfo Wilson World`

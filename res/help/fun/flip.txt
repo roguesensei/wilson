@@ -1,5 +1,5 @@
-Written as: `|flip`
+Written as: `<prefix>flip`
 
 Valid Examples:
-:white_small_square: `|flip`
-:white_small_square: `|flip Wilson`
+:white_small_square: `<prefix>flip`
+:white_small_square: `<prefix>flip Wilson`

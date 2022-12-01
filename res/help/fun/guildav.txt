@@ -1,6 +1,6 @@
-Written as: `|guildav`
-Command aliases: `|serverav`
+Written as: `<prefix>guildav`
+Command aliases: `<prefix>serverav`
 
 Valid Examples:
-:white_small_square: `|guildav`
-:white_small_square: `|serverav Wilson World`
+:white_small_square: `<prefix>guildav`
+:white_small_square: `<prefix>serverav Wilson World`

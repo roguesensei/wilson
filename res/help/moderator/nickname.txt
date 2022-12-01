@@ -1,9 +1,9 @@
-Written as: `|nickname <@user> <nickname>`
-Command aliases: `|nick`
+Written as: `<prefix>nickname <@user> <nickname>`
+Command aliases: `<prefix>nick`
 
 Valid Examples:
-:white_small_square: `|nickname @user Wilson`
+:white_small_square: `<prefix>nickname @user Wilson`
 
 Invalid Examples:
-:white_small_square: `|nickname`
-:white_small_square: `|nickname @UserNotInServer Here`
+:white_small_square: `<prefix>nickname`
+:white_small_square: `<prefix>nickname @UserNotInServer Here`

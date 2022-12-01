@@ -1,10 +1,10 @@
-Written as: `|whois <@user>`
+Written as: `<prefix>whois <@user>`
 Where `<@user>` is a parameter of a discord user.
 
 Valid Examples:
-:white_small_square: `|whois Wilson`
-:white_small_square: `|whois @Wilson`
+:white_small_square: `<prefix>whois Wilson`
+:white_small_square: `<prefix>whois @Wilson`
 
 Invalid Examples:
-:white_small_square: `|whois`
-:white_small_square: `|whois @UserNotInServer`
+:white_small_square: `<prefix>whois`
+:white_small_square: `<prefix>whois @UserNotInServer`

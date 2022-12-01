@@ -1,5 +1,5 @@
-Written as: `|ping`
+Written as: `<prefix>ping`
 
 Valid Examples:
-:white_small_square: `|ping`
-:white_small_square: `|ping Wilson`
+:white_small_square: `<prefix>ping`
+:white_small_square: `<prefix>ping Wilson`

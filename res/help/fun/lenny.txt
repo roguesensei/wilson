@@ -1,5 +1,5 @@
-Written as: `|lenny`
+Written as: `<prefix>lenny`
 
 Valid Examples:
-:white_small_square: `|lenny`
-:white_small_square: `|lenny Wilson`
+:white_small_square: `<prefix>lenny`
+:white_small_square: `<prefix>lenny Wilson`

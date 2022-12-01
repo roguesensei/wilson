@@ -1,11 +1,11 @@
-Written as: `|shun <@user> <hours? 1-168: default 1>`
-Command aliases: `|mute |silence |timeout`
+Written as: `<prefix>shun <@user> <hours? 1-168: default 1>`
+Command aliases: `<prefix>mute <prefix>silence <prefix>timeout`
 
 Valid Examples:
-:white_small_square: `|shun @user`
-:white_small_square: `|shun @user 24`
+:white_small_square: `<prefix>shun @user`
+:white_small_square: `<prefix>shun @user 24`
 
 Invalid Examples:
-:white_small_square: `|shun`
-:white_small_square: `|shun @UserNotInServer`
-:white_small_square: `|shun @user 999`
+:white_small_square: `<prefix>shun`
+:white_small_square: `<prefix>shun @UserNotInServer`
+:white_small_square: `<prefix>shun @user 999`

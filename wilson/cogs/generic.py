@@ -119,7 +119,7 @@ class Generic(commands.Cog):
                 for command in app_commands:
                     slash_commands.append(f'`/{command.name}`')
 
-                body = f.read().format(extensions_body, ' '.join(slash_commands))
+                body = f.read().format(extensions_body, ' '.join(slash_commands)).replace('<prefix>', self._bot.config.bot_settings.prefix)
 
                 embed = self._bot.generate_embed(title=f'{help_command.title()}!', author=ctx.author, description=body,
                                                  thumbnail_url=bot_avatar)

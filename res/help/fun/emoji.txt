@@ -1,10 +1,10 @@
-Written as: `|emoji <:emoji:>`
+Written as: `<prefix>emoji <:emoji:>`
 `<:emoji:>` is a server's custom emoji, not a standard unicode one
-Command aliases: `|e`
+Command aliases: `<prefix>e`
 
 Valid Examples:
-:white_small_square: `|emoji :custom_emoji:`
+:white_small_square: `<prefix>emoji :custom_emoji:`
 
 Invalid Examples:
-:white_small_square: `|emoji`
-:white_small_square: `|emoji :blush:` where `:blush:`
+:white_small_square: `<prefix>emoji`
+:white_small_square: `<prefix>emoji :blush:` where `:blush:`

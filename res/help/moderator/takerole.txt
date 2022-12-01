@@ -1,9 +1,9 @@
-Written as: `|takerole <@user> <@role>`
+Written as: `<prefix>takerole <@user> <@role>`
 `<@user>` is the user to take the role `<@role>` from
-Command aliases: `|removerole`
+Command aliases: `<prefix>removerole`
 
 Valid Examples:
-:white_small_square: `|takerole @user member`
+:white_small_square: `<prefix>takerole @user member`
 
 Invalid Examples:
-:white_small_square: `|takerole`
+:white_small_square: `<prefix>takerole`

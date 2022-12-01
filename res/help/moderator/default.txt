@@ -9,8 +9,8 @@
 :white_small_square: `ban <@user> <reason?>`: Ban a user from the server with optional reason
 :white_small_square: `unban <user_id>`: Unban a user by `<user_id>`
 
-Type `|help <category> <command_name>` for more information on an individual command. Exclude parameters.
+Type `<prefix>help <category> <command_name>` for more information on an individual command. Exclude parameters.
 ```yml
-Example: |help fun dice
+Example: <prefix>help fun dice
 # Not case sensitive
 ```
