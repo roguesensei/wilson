@@ -51,6 +51,7 @@ class Admin(commands.Cog):
         await ctx.reply(f'```\n{output}\n```')
 
     @commands.command()
+    @commands.is_owner()
     async def sync(self, ctx: commands.Context, guild=0) -> None:
         fmt = []
         if guild != 0:
