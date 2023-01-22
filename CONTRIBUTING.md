@@ -8,5 +8,7 @@ Before contributing, make sure you have done the following:
 - You have read/understood the License (see below)
 ## Pull Requests
 All PRs are squach merged into the `main` branch. Make sure you open/link any open issues to help identify how the PR is contributing.
+## Github
+Viewing from Github? Please note that the github repository is a mirror of the main repo over on [GitLab](https://gitlab.com/roguesensei/wilson), thus contributions would be preferred from there.
 # License
 By contributing, forking or modifying `Wilson`, you agree that your changes will be licensed under the `GNU General Public License v3.0` (Please read [LICENSE](https://gitlab.com/roguesensei/wilson/-/blob/stable/LICENSE) for more details).
