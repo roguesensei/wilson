@@ -6,8 +6,8 @@ Before contributing, make sure you have done the following:
 - In the case of bugs/feature requests, you follow the template as closely as possible
 - In the case of bugs, you are able to provide reproduction steps with examples
 - You have read/understood the License (see below)
-## Github
-Viewing from Github? Please note that the github repository is a mirror of the main repo over on [GitLab](https://gitlab.com/roguesensei/wilson), thus contributions would be preferred from there.
+## GitHub
+Viewing from [GitHub](https://github.com/roguesensei/wilson)? Please note that the GitHub repository is a mirror of the main repo over on [GitLab](https://gitlab.com/roguesensei/wilson), thus contributions/merge requests should be made there.
 ## Pull Requests
 All PRs are squash merged into the `main` branch. Make sure you open/link any open issues to help identify how the PR is contributing.
 # License
