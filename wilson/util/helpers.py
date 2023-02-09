@@ -3,7 +3,7 @@ import discord
 import os.path
 
 
-def add_escape_characters(string: str):
+def add_escape_characters(string: str) -> str:
     """Adds escape characters to format properly in discord message"""
     protected_chars = ['*', '\\']
     new_string = ''

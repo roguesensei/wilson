@@ -26,7 +26,7 @@ class GuildSettings:
         return os.path.exists(f'.wilson/guilds/{self.guild_id}.json')
 
     @staticmethod
-    def get_settings(guild_id: int):
+    def get_settings(guild_id: int) -> GuildSettings:
         guild = GuildSettings(guild_id)
         if guild.opted_in:
             with open(f'.wilson/guilds/{guild_id}.json') as f:
@@ -39,6 +39,6 @@ class GuildSettings:
         return guild
 
     @staticmethod
-    def delete_settings(guild_id: int):
+    def delete_settings(guild_id: int) -> None:
         os.remove(f'.wilson/guilds/{guild_id}.json')
 

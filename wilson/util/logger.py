@@ -22,7 +22,7 @@ def set_debug_mode(value: bool) -> None:
     debug_mode = value
 
 
-def log(message: str, level: LogLevel = LogLevel.MESSAGE):
+def log(message: str, level: LogLevel = LogLevel.MESSAGE) -> None:
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
     level_text = '[MESSAGE]'
@@ -41,7 +41,7 @@ def log(message: str, level: LogLevel = LogLevel.MESSAGE):
         f'\033[36m{timestamp}\033[0m {separator} \033[01m{level_text}\033[0m {separator}\t{message}')
 
 
-def log_exception(exc: BaseException):
+def log_exception(exc: BaseException) -> None:
     print('\033[01m\033[95m[PYERR]\033[0m')
     print(f'{separator} \033[01m\033[91m{str(exc)}\033[0m')
     tb = traceback.format_tb(exc.__traceback__, limit=-1)
@@ -52,31 +52,31 @@ def log_exception(exc: BaseException):
     print('\033[01m\033[95m[PYEND]\033[0m')
 
 
-def log_message(message: str):
+def log_message(message: str) -> None:
     log(message, LogLevel.MESSAGE)
 
 
-def log_info(message: str):
+def log_info(message: str) -> None:
     if debug_mode:
         log(message, LogLevel.INFO)
 
 
-def log_debug(message: str):
+def log_debug(message: str) -> None:
     if debug_mode:
         log(message, LogLevel.DEBUG)
 
 
-def log_warning(message: str):
+def log_warning(message: str) -> None:
     log(message, LogLevel.WARNING)
 
 
-def log_error(message: str, exc: BaseException = None):
+def log_error(message: str, exc: BaseException = None) -> None:
     log(message, LogLevel.ERROR)
     if exc is not None:
         log_exception(exc)
 
 
-def log_critical(message: str, exc: BaseException = None):
+def log_critical(message: str, exc: BaseException = None) -> None:
     log(message, LogLevel.CRITICAL)
     if exc is not None:
         log_exception(exc)
