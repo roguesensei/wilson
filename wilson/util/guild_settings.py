@@ -26,7 +26,7 @@ class GuildSettings:
         return os.path.exists(f'.wilson/guilds/{self.guild_id}.json')
 
     @staticmethod
-    def get_settings(guild_id: int) -> GuildSettings:
+    def get_settings(guild_id: int):
         guild = GuildSettings(guild_id)
         if guild.opted_in:
             with open(f'.wilson/guilds/{guild_id}.json') as f:

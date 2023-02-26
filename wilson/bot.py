@@ -22,8 +22,6 @@ cogs = [
 
 class Wilson(commands.Bot):
     def __init__(self, config: BotConfig):
-        """Constructor function
-        """
         self._config = config
         self._online_time = 0
         self._synced = False
