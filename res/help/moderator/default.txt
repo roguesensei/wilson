@@ -1,5 +1,4 @@
 :white_small_square: `sweep <number 2-100>`: Sweep the chat of filth *(Messages < 14 days old)*
-:white_small_square: `dupe <number 2-100> <message>`: Duplicate message
 :white_small_square: `addrole <@user> <@role>`: Give user a role
 :white_small_square: `takerole <@user> <@role>`: Remove role from user
 :white_small_square: `clone <:emoji:>`: Clone an emoji from another server
