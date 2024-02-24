@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-python
+FROM arm32v7/python:3.7-slim-bullseye
 
 WORKDIR /app
 
