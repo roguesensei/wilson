@@ -1,10 +1,13 @@
-FROM python:3.11
+FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get upgrade
-RUN apt-get install -y python3-pip libffi-dev libsodium-dev libopus-dev ffmpeg
+RUN apt-get update
+RUN apt-get install -y libffi-dev libsodium-dev libopus-dev ffmpeg
 
-RUN pip3 install -r requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python3", "main.py" ]
+COPY . .
+
+ENTRYPOINT [ "python", "main.py" ]
