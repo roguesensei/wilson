@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN apt-get update
+# RUN apt-get update
 RUN apt-get install -y git libffi-dev libsodium-dev libopus-dev ffmpeg
 
 COPY requirements.txt .
