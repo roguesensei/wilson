@@ -1,5 +1,4 @@
-pynacl
-discord.py[voice]
+discord.py
 pyyaml
 requests
 GitPython
