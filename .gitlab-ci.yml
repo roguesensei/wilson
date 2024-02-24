@@ -19,7 +19,7 @@ docker-build:
   variables:
     DOCKER_IMAGE_NAME: roguesensei/wilson
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login -u "$DOCK_USERNAME" -p "$DOCK_PASSWORD"
   # All branches are tagged with $DOCKER_IMAGE_NAME (defaults to commit ref slug)
   # Default branch is also tagged with `latest`
   script:
